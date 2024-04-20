@@ -1,10 +1,36 @@
-<main>
+<main class="w-full">
   <mat-sidenav-container class="example-container">
-    <mat-sidenav mode="side" opened style="width: 200px"
-      >Sidenav content</mat-sidenav
+    <mat-sidenav mode="side" opened class="w-96"
+      ><div class="mt-8">
+        <mat-card-content
+          ><img
+            src="/Health_Body/src/assets/img/carne.jpeg"
+            alt="pepito"
+            mat-card-image
+        /></mat-card-content>
+      </div>
+      <div><h1>Hola Health People</h1></div></mat-sidenav
     >
-    <mat-sidenav-content style="padding-left: 20px"
-      >Main content</mat-sidenav-content
-    >
+
+    <mat-sidenav-content style="padding-left: 20px">
+      <main class="flex-col mt-8">
+        <h1>Buscador de alimentos</h1>
+        <aside>
+          <form action="" class="rounded-full flex">
+            <div class="card flex flex-wrap justify-content-center gap-3">
+              <p-iconField iconPosition="left">
+                <p-inputIcon styleClass="pi pi-search" />
+                <input type="text" pInputText placeholder="Search" />
+              </p-iconField>
+              <p-iconField iconPosition="right">
+                <p-inputIcon styleClass="pi pi-spinner pi-spin" />
+                <input type="text" pInputText />
+              </p-iconField>
+            </div>
+          </form>
+        </aside>
+      </main>
+      <img src="/Health_Body/src/assets/img/carne.jpeg" alt="carne" />
+    </mat-sidenav-content>
   </mat-sidenav-container>
 </main>
