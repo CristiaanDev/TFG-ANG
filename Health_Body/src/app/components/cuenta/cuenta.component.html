@@ -1,36 +1,19 @@
-<main class="w-full">
-  <mat-sidenav-container class="example-container">
-    <mat-sidenav mode="side" opened class="w-96"
-      ><div class="mt-8">
-        <mat-card-content
-          ><img
-            src="/Health_Body/src/assets/img/carne.jpeg"
-            alt="pepito"
-            mat-card-image
-        /></mat-card-content>
-      </div>
-      <div><h1>Hola Health People</h1></div></mat-sidenav
-    >
-
-    <mat-sidenav-content style="padding-left: 20px">
-      <main class="flex-col mt-8">
-        <h1>Buscador de alimentos</h1>
-        <aside>
-          <form action="" class="rounded-full flex">
-            <div class="card flex flex-wrap justify-content-center gap-3">
-              <p-iconField iconPosition="left">
-                <p-inputIcon styleClass="pi pi-search" />
-                <input type="text" pInputText placeholder="Search" />
-              </p-iconField>
-              <p-iconField iconPosition="right">
-                <p-inputIcon styleClass="pi pi-spinner pi-spin" />
-                <input type="text" pInputText />
-              </p-iconField>
-            </div>
-          </form>
-        </aside>
-      </main>
-      <img src="/Health_Body/src/assets/img/carne.jpeg" alt="carne" />
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<main class="flex w-full h-auto">
+  <nav class="flex flex-col bg-cyan-500 min-w-72 min-h-screen">
+    <div class="flex mt-12 bg-cyan-100 justify-center mb-10">
+      <p class="pr-4">quqedice</p>
+      <img src="/Health_Body/src/assets/img/BH_LOGO.svg" alt="logo">
+    </div>
+    <div class="flex flex-col justify-evenly text-center ml-4 mr-4 hover:bg-fuchsia-700 max-w-62 min-h-56">
+      <h3 class="text-center rounded-xl bg-slate-600">Menú semanl</h3>
+      <h3 class="rounded-xl bg-slate-900">Perfil</h3>
+      <h3 class="rounded-xl bg-slate-900">Cerrar sesión</h3>
+    </div>
+  </nav>
+  <aside>
+    <section>
+      <h2>Buscar alimentos</h2>
+      <label for="search"></label>
+    </section>
+  </aside>
 </main>
