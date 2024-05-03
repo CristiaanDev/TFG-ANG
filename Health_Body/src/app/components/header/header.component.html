@@ -1,17 +1,42 @@
-<header class="flex flex-row justify-around h-14 bg-bg-header">
+<header class="flex flex-row justify-around h-14 bg-bg-header w-full">
   <section class="flex flex-row">
     <img
       src="../../assets/img/BH_LOGO.svg"
       alt="Logo"
       class="size-14 cursor-pointer"
-      routerLink="/cuenta"
+      routerLink="/Inicio"
     />
   </section>
   <section class="flex flex-row">
-    <button class="flex flex-col justify-center font-medium pl-4 pr-4 h-10 mt-2 rounded-lg focus:text-texto">Cuenta/dash</button>
-    <button class="flex flex-col justify-center font-medium pl-4 pr-4 h-10 mt-2 rounded-lg focus:text-texto">Inicio</button>
-    <button class="flex flex-col justify-center font-medium pl-4 pr-4 h-10 mt-2 rounded-lg focus:text-texto">Colaboradores</button>
-    <button class="flex flex-col justify-center font-medium pl-4 pr-4 h-10 mt-2 rounded-lg focus:text-texto">Recetas</button>
-    <button class="flex flex-col justify-center font-medium pl-4 pr-4 h-10 mt-2 rounded-lg bg-pistacho">Iniciar sesion</button>
+    <button
+      class="flex flex-col justify-center font-medium pl-4 pr-4 h-10 mt-2 rounded-lg focus:text-texto"
+      routerLink="/cuenta"
+    >
+      Cuenta/dash
+    </button>
+    <button
+      class="flex flex-col justify-center font-medium pl-4 pr-4 h-10 mt-2 rounded-lg focus:text-texto"
+      routerLink="/Inicio"
+    >
+      Inicio
+    </button>
+    <button
+      class="flex flex-col justify-center font-medium pl-4 pr-4 h-10 mt-2 rounded-lg focus:text-texto"
+      routerLink="/blog"
+    >
+      Blog
+    </button>
+    <button
+      class="flex flex-col justify-center font-medium pl-4 pr-4 h-10 mt-2 rounded-lg focus:text-texto"
+      routerLink="/recetas"
+    >
+      Recetas
+    </button>
+    <button
+      class="flex flex-col justify-center font-medium pl-4 pr-4 h-10 mt-2 rounded-lg bg-pistacho"
+      routerLink="/login"
+    >
+      Iniciar sesion
+    </button>
   </section>
 </header>

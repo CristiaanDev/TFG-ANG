@@ -21,6 +21,7 @@
   background: #FFE500;
   white-space: nowrap;
   position: relative;
+  height: 20px;
 }
 
 .logos:before,
@@ -41,6 +42,7 @@
 .logos-slide {
   display: inline-block;
   animation: 25s slide infinite linear;
+  padding-right: 12px;
 }
 
 .logos-slide img {

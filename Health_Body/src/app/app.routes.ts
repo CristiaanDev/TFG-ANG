@@ -22,5 +22,20 @@ export const routes: Routes = [
     path: 'recetas',
     loadComponent: () => import('./components/recetas/recetas.component').then((m) => m.RecetasComponent),
   },
+  {
+    path: 'blog',
+    loadComponent: () => import('./components/blog/blog.component').then((m) => m.BlogComponent),
+  },
+  {
+    path: 'aviso',
+    loadComponent: () => import('./components/aviso/aviso.component').then((m) => m.AvisoComponent),
+  },{
+    path: 'recuperar-contraseña',
+    loadComponent: () => import('./components/recuperar-password/recuperar-password.component').then((m) => m.RecuperarPasswordComponent),
+  },
+  {
+    path: 'registro',
+    loadComponent: () => import('./components/registro/registro.component').then((m) => m.RegistroComponent),
+  },
 
 ];
