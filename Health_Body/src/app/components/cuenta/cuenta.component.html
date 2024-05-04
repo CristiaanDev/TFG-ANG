@@ -1,5 +1,5 @@
 <main
-  class="flex flex-row min-h-screen min-w-7xl bg-[url(./assets/img/cool-background.png)]"
+  class="flex flex-row max-h-screen min-w-7xl bg-[url(./assets/img/cool-background.png)]"
 >
   <aside
     class="flex flex-col w-1/5 p-4 border-r-2 drop-shadow-2xl border-r-green-600 bg-slate-100"
@@ -25,6 +25,11 @@
       <button
         class="flex flex-col text-start text-lg font-medium p-8 justify-center h-12 rounded-lg cursor-pointer hover:bg-green-200"
       >
+        Buscar alimento
+      </button>
+      <button
+        class="flex flex-col text-start text-lg font-medium p-8 justify-center h-12 rounded-lg cursor-pointer hover:bg-green-200"
+      >
         Menú semanal
       </button>
       <button
@@ -41,7 +46,7 @@
   </aside>
 
   <aside
-    class="flex flex-col w-4/5 m-6 rounded-lg p-8 bg-slate-100 border-2 border-green-600 text-black"
+    class="flex flex-col w-4/5 m-6 rounded-lg p-8 bg-slate-100 border-2 border-green-600 text-black relative"
   >
     <section class="flex flex-col mb-8">
       <h1 class="flex text-start text-black">
@@ -52,18 +57,108 @@
           type="text"
           name="barras"
           id="barras"
-          placeholder="Buscar código de barras"
+          placeholder="Ejemplo: Arroz"
           #txtBuscar
-          class="flex flex-row justify-between border-2 rounded-xl p-1 w-96 h-8 bg-pistacho-claro"
+          class="flex flex-row justify-between border-2 rounded-lg p-1 w-96 h-8 bg-pistacho-claro"
         />
+        <button
+          class="flex flex-col text-texto font-medium justify-center mx-6 rounded-md p-2 h-8 bg-pistacho text-lg"
+        >
+          Buscar
+        </button>
       </form>
     </section>
 
-    <section class="flex flex-col h-min border-4">
-      <table class="">
-        <div>{{ datos.code }}</div>
-        <div>{{ datos.product.product_name }}</div>
-      </table>
+    <section
+      class="bg-bg-header rounded-lg p-4 max-h-[calc(100vh-200px)] overflow-y-auto"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+        <div *ngFor="let producto of datos.products; let i = index">
+          <div class="bg-white rounded-lg shadow-md h-72">
+            <div class="bg-pistacho text-texto text-sm text-center p-2">
+              Good match 72%
+            </div>
+            <img
+              [src]="producto.image_front_small_url"
+              alt="Imagen no disponible"
+              class="h-32 object-cover w-auto mx-auto p-2"
+            />
+            <h4 class="font-semibold mb-4 h-16 text-sm text-center">
+              {{ producto.product_name }}
+            </h4>
+            <div class="flex flex-row justify-evenly">
+              <button class="bg-pistacho-claro font-medium p-2 rounded-lg">
+                Añadir
+              </button>
+              <button
+                (click)="showPopup(producto)"
+                class="bg-pistacho-claro font-medium p-2 rounded-lg"
+              >
+                Ver macros
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <div *ngIf="showModal" class="fixed inset-0 z-10 overflow-y-auto">
+      <div class="flex items-center justify-center min-h-screen">
+        <div
+          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity backdrop-filter backdrop-blur-sm"
+        ></div>
+        <div
+          class="relative z-10 w-full max-w-lg p-4 bg-white rounded-lg shadow-xl border-2 border-texto"
+        >
+          <div class="flex flex-col gap-4">
+            <div
+              class="bg-pistacho text-texto text-center text-sm font-semibold p-2"
+            >
+              Macros
+            </div>
+            <img
+              [src]="selectedProduct?.image_nutrition_small_url"
+              alt="Imagen no disponible"
+              class="h-72 object-cover w-auto mx-auto p-2"
+            />
+            <h2 class="font-semibold text-lg mb-2">
+              {{ selectedProduct?.product_name }}
+            </h2>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-gray-100 p-2 rounded-lg">
+                <p class="font-medium">Proteina / 100g:</p>
+                <p>{{ selectedProduct?.nutriments.proteins }}</p>
+              </div>
+              <div class="bg-gray-100 p-2 rounded-lg">
+                <p class="font-medium">Grasas / 100g:</p>
+                <p>{{ selectedProduct?.nutriments.fat }}</p>
+              </div>
+              <div class="bg-gray-100 p-2 rounded-lg">
+                <p class="font-medium">Hidratos / 100g:</p>
+                <p>{{ selectedProduct?.nutriments.carbohydrates }}</p>
+              </div>
+              <div class="bg-gray-100 p-2 rounded-lg">
+                <p class="font-medium">Kcal / 100g:</p>
+                <p>{{ selectedProduct?.nutriments.energy_value }}</p>
+              </div>
+            </div>
+            <div class="flex justify-evenly">
+              <button
+                (click)="hidePopup()"
+                class="bg-pistacho-claro font-medium text-base p-2 rounded-lg w-32"
+              >
+                Añadir
+              </button>
+              <button
+                (click)="hidePopup()"
+                class="bg-pistacho-claro font-medium text-base p-2 rounded-lg w-32"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </aside>
 </main>

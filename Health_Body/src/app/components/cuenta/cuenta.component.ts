@@ -6,6 +6,7 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { AvisoComponent } from '../aviso/aviso.component';
 import { ApiService } from '../../services/api.service';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-cuenta',
@@ -19,11 +20,14 @@ import { ApiService } from '../../services/api.service';
     IconFieldModule,
     InputIconModule,
     AvisoComponent,
+    NgFor,
+    NgIf,
   ],
 })
 export class CuentaComponent {
   datos: any = {};
-
+  showModal: boolean = false;
+  selectedProduct: any;
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
@@ -34,9 +38,20 @@ export class CuentaComponent {
   }
 
   getDatos() {
-    this.apiService.getData().subscribe((data) => {
+    const alimento = ''; // Nombre del alimento
+    this.apiService.getData(alimento).subscribe((data) => {
       this.datos = data;
       console.log(this.datos);
     });
+  }
+
+  showPopup(producto: any) {
+    this.selectedProduct = producto;
+    this.showModal = true;
+  }
+
+  // Método para ocultar el modal
+  hidePopup() {
+    this.showModal = false;
   }
 }
