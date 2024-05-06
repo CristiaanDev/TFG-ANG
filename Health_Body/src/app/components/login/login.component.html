@@ -1,20 +1,15 @@
 <app-aviso></app-aviso>
 <app-header></app-header>
 <main class="h-screen w-full justify-center flex flex-row">
-  <aside class="flex flex-col justify-center w-full">
-    <section
-      class="flex flex-row rounded-xl w-96 h-96 justify-center bg-purple"
-    >
-      <div class="flex w-80 h-80 justify-center">
-        <img src="../../assets/img/Computer login-rafiki.svg" alt="" />
-      </div>
-      <div class="flex flex-col w-80 h-80 justify-center text-center">
+  <aside class="flex flex-row justify-center w-full">
+    <section class="flex flex-col w-1/3  justify-start bg-tahiti">
+      <div class="flex flex-col justify-center mt-20 text-center">
         <!--Hacer quee cuando no esta registrado y quiera estar registrado, haga como una transicion de pagina entre el login y el registro-->
 
-        <form action="">
-          <h2>Iniciar sesión</h2>
+        <form action="" class="flex flex-col w-full justify-center bg-white">
+          <h2 class="flex bg-purple justify-center">Iniciar sesión</h2>
 
-          <div class="inputbox">
+          <div class="p-4">
             <input
               type="email"
               name=""
@@ -25,7 +20,7 @@
             <!--<label for="">Correo electrónico:</label>-->
           </div>
 
-          <div class="inputbox">
+          <div class="p-4">
             <input
               type="password"
               name=""
@@ -36,7 +31,7 @@
             <!--<label for="">Contraseña:</label>-->
           </div>
 
-          <div class="forget">
+          <div class="p-4">
             <label for=""> <input type="checkbox" />Recuérdame </label>
             <label for=""> Recuperar contraseña </label>
           </div>
@@ -52,6 +47,12 @@
           </div>
         </form>
       </div>
+    </section>
+    <section class="flex w-1/3 bg-metal">
+      card precio
+    </section>
+    <section class="flex w-1/3">
+      <img src="../../assets/img/Rectangle 33.png" alt="">
     </section>
   </aside>
 </main>
