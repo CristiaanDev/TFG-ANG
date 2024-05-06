@@ -19,6 +19,8 @@ module.exports = {
       rojo: "#FF0000",
       "bg-header": "#C6E0C8",
       "amarillo-alerta": "#FFE500",
+      blur: "#327950",
+      black: "#000000",
     },
   },
   plugins: [],
