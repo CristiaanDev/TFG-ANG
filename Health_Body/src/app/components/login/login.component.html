@@ -1,8 +1,8 @@
 <app-aviso></app-aviso>
 <app-header></app-header>
-<main class="h-screen w-full justify-center flex flex-row mt-24">
+<main class="h-screen w-full justify-center flex flex-row mb-0">
   <aside
-    class="flex flex-col justify-center rounded-3xl w-10/12 bg-cover bg-no-repeat h-5/6"
+    class="flex flex-col justify-center rounded-3xl w-full bg-cover bg-no-repeat h-full"
     style="
       background-image: url('../../assets/img/pexels-ella-olsson-1640770.jpg');
     "
@@ -12,7 +12,9 @@
       <div class="flex justify-center rounded-l-2xl bg-bg-header">
         <img src="../../assets/img/Computer login-rafiki.svg" alt="" />
       </div>
+      <form action="" [formGroup]="form"></form>
       <form
+        (ngSubmit)="onSubmit()"
         action=""
         class="flex flex-col p-20 rounded-r-2xl justify-center bg-opacity-50 backdrop-blur-2xl"
       >
@@ -21,7 +23,8 @@
         <div class="p-4">
           <input
             type="email"
-            name=""
+            name="email"
+            formControlName="email"
             id=""
             required
             placeholder="Correo electrónico"
@@ -33,7 +36,8 @@
         <div class="p-4">
           <input
             type="password"
-            name=""
+            name="password"
+            formControlName="password"
             id=""
             required
             placeholder="Contraseña"
@@ -43,16 +47,23 @@
         </div>
 
         <div class="p-4">
-          <label for="" class="pr-4 pl-4"> <input type="checkbox" />Recuérdame </label>
+          <label for="" class="pr-4 pl-4">
+            <input type="checkbox" />Recuérdame
+          </label>
           <label for="" class="pr-4 pl-4"> Recuperar contraseña </label>
         </div>
-        <button class="bg-pistacho p-2 rounded-3xl mb-4 text-xl">Entrar</button>
+        <button class="bg-pistacho p-2 rounded-3xl mb-4 text-xl" type="submit">
+          Entrar
+        </button>
 
         <div class="">
           <p>
             No tienes cuenta ?
-            <a routerLink="/registro" defaultHref="/Inicio/log-in"
-            class="text-blur font-medium hover:border-b-2 cursor-pointer">Regístrate</a
+            <a
+              routerLink="/registro"
+              defaultHref="/Inicio/log-in"
+              class="text-blur font-medium hover:border-b-2 cursor-pointer"
+              >Regístrate</a
             >
           </p>
         </div>

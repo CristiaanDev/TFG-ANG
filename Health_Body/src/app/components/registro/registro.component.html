@@ -1,8 +1,8 @@
 <app-aviso></app-aviso>
 <app-header></app-header>
-<main class="h-screen w-full justify-center flex flex-row mt-24">
+<main class="h-screen w-full justify-center flex flex-row">
   <aside
-    class="flex flex-col justify-center rounded-3xl w-10/12 bg-cover bg-no-repeat h-5/6"
+    class="flex flex-col justify-center rounded-3xl w-full bg-cover bg-no-repeat h-full"
     style="
       background-image: url('../../assets/img/pexels-ella-olsson-1640770.jpg');
     "
@@ -13,6 +13,7 @@
         <img src="../../assets/img/Sign up-amico.svg" class="h-auto" alt="" />
       </div>
       <form
+        (ngSubmit)="onSubmit()"
         action=""
         class="flex flex-col p-20 rounded-r-2xl justify-center bg-opacity-50 backdrop-blur-2xl"
       >
@@ -21,6 +22,7 @@
         <div class="p-4">
           <input
             type="email"
+            formControlName="email"
             name=""
             id=""
             required
@@ -32,11 +34,12 @@
 
         <div class="p-4">
           <input
-            type="password"
-            name=""
+            type="text"
+            name="username"
+            formControlName="username"
             id=""
             required
-            placeholder="Contraseña"
+            placeholder="Nombre de usuario"
             class="bg-blur text-base bg-opacity-25 pl-4 pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10"
           />
           <!--<label for="">Contraseña:</label>-->
@@ -44,7 +47,8 @@
         <div class="p-4">
           <input
             type="password"
-            name=""
+            name="password"
+            formControlName="password"
             id=""
             required
             placeholder="Contraseña"
@@ -54,16 +58,23 @@
         </div>
 
         <div class="p-4">
-          <label for="" class="pr-4 pl-4"> <input type="checkbox" />Recuérdame </label>
+          <label for="" class="pr-4 pl-4">
+            <input type="checkbox" />Recuérdame
+          </label>
           <label for="" class="pr-4 pl-4"> Recuperar contraseña </label>
         </div>
-        <button class="bg-pistacho p-2 rounded-3xl mb-4 text-xl">Registrarse</button>
+        <button class="bg-pistacho p-2 rounded-3xl mb-4 text-xl" type="submit">
+          Registrarse
+        </button>
 
         <div class="">
           <p>
             No tienes cuenta ?
-            <a routerLink="/login" defaultHref="/Inicio/log-in"
-            class="text-blur font-medium hover:border-b-2 cursor-pointer">Iniciar sesión</a
+            <a
+              routerLink="/login"
+              defaultHref="/Inicio/log-in"
+              class="text-blur font-medium hover:border-b-2 cursor-pointer"
+              >Iniciar sesión</a
             >
           </p>
         </div>
