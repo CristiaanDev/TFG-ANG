@@ -1,6 +1,6 @@
 <app-aviso></app-aviso>
 <app-header></app-header>
-<main class="h-full w-full justify-center flex flex-row mt-24">
+<main class="h-screen w-full justify-center flex flex-row mt-24">
   <aside
     class="flex flex-col justify-center rounded-3xl w-10/12 bg-cover bg-no-repeat h-5/6"
     style="
@@ -25,7 +25,7 @@
             id=""
             required
             placeholder="Correo electrónico"
-            class="bg-blur text-base bg-opacity-25 pl-2 pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10"
+            class="bg-blur text-base bg-opacity-25 pl-4 pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10"
           />
           <!--<label for="">Correo electrónico:</label>-->
         </div>
@@ -37,22 +37,22 @@
             id=""
             required
             placeholder="Contraseña"
-            class="bg-blur text-base bg-opacity-25 pl-2 pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10"
+            class="bg-blur text-base bg-opacity-25 pl-4 pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10"
           />
           <!--<label for="">Contraseña:</label>-->
         </div>
 
         <div class="p-4">
-          <label for=""> <input type="checkbox" />Recuérdame </label>
-          <label for=""> Recuperar contraseña </label>
+          <label for="" class="pr-4 pl-4"> <input type="checkbox" />Recuérdame </label>
+          <label for="" class="pr-4 pl-4"> Recuperar contraseña </label>
         </div>
-        <button>Entrar</button>
+        <button class="bg-pistacho p-2 rounded-3xl mb-4 text-xl">Entrar</button>
 
-        <div class="register">
+        <div class="">
           <p>
             No tienes cuenta ?
-            <a routerLink="/Inicio/registro" defaultHref="/Inicio/log-in"
-              >Regístrate</a
+            <a routerLink="/registro" defaultHref="/Inicio/log-in"
+            class="text-blur font-medium hover:border-b-2 cursor-pointer">Regístrate</a
             >
           </p>
         </div>

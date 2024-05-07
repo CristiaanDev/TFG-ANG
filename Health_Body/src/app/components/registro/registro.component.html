@@ -1,1 +1,74 @@
-<p>registro works!</p>
+<app-aviso></app-aviso>
+<app-header></app-header>
+<main class="h-screen w-full justify-center flex flex-row mt-24">
+  <aside
+    class="flex flex-col justify-center rounded-3xl w-10/12 bg-cover bg-no-repeat h-5/6"
+    style="
+      background-image: url('../../assets/img/pexels-ella-olsson-1640770.jpg');
+    "
+  >
+    <div class="flex flex-row justify-center text-center m-20">
+      <!--Hacer quee cuando no esta registrado y quiera estar registrado, haga como una transicion de pagina entre el login y el registro-->
+      <div class="flex flex-col justify-center rounded-l-2xl bg-bg-header">
+        <img src="../../assets/img/Sign up-amico.svg" class="h-auto" alt="" />
+      </div>
+      <form
+        action=""
+        class="flex flex-col p-20 rounded-r-2xl justify-center bg-opacity-50 backdrop-blur-2xl"
+      >
+        <h1 class="text-texto">Registro</h1>
+
+        <div class="p-4">
+          <input
+            type="email"
+            name=""
+            id=""
+            required
+            placeholder="Correo electrónico"
+            class="bg-blur text-base bg-opacity-25 pl-4 pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10"
+          />
+          <!--<label for="">Correo electrónico:</label>-->
+        </div>
+
+        <div class="p-4">
+          <input
+            type="password"
+            name=""
+            id=""
+            required
+            placeholder="Contraseña"
+            class="bg-blur text-base bg-opacity-25 pl-4 pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10"
+          />
+          <!--<label for="">Contraseña:</label>-->
+        </div>
+        <div class="p-4">
+          <input
+            type="password"
+            name=""
+            id=""
+            required
+            placeholder="Contraseña"
+            class="bg-blur text-base bg-opacity-25 pl-4 pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10"
+          />
+          <!--<label for="">Contraseña:</label>-->
+        </div>
+
+        <div class="p-4">
+          <label for="" class="pr-4 pl-4"> <input type="checkbox" />Recuérdame </label>
+          <label for="" class="pr-4 pl-4"> Recuperar contraseña </label>
+        </div>
+        <button class="bg-pistacho p-2 rounded-3xl mb-4 text-xl">Registrarse</button>
+
+        <div class="">
+          <p>
+            No tienes cuenta ?
+            <a routerLink="/login" defaultHref="/Inicio/log-in"
+            class="text-blur font-medium hover:border-b-2 cursor-pointer">Iniciar sesión</a
+            >
+          </p>
+        </div>
+      </form>
+    </div>
+  </aside>
+</main>
+<app-footer></app-footer>
