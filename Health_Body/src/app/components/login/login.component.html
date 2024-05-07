@@ -12,8 +12,9 @@
       <div class="flex justify-center rounded-l-2xl bg-bg-header">
         <img src="../../assets/img/Computer login-rafiki.svg" alt="" />
       </div>
-      <form action="" [formGroup]="form"></form>
+
       <form
+        [formGroup]="form"
         (ngSubmit)="onSubmit()"
         action=""
         class="flex flex-col p-20 rounded-r-2xl justify-center bg-opacity-50 backdrop-blur-2xl"

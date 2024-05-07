@@ -13,6 +13,7 @@
         <img src="../../assets/img/Sign up-amico.svg" class="h-auto" alt="" />
       </div>
       <form
+        [formGroup]="form"
         (ngSubmit)="onSubmit()"
         action=""
         class="flex flex-col p-20 rounded-r-2xl justify-center bg-opacity-50 backdrop-blur-2xl"
