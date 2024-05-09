@@ -29,5 +29,17 @@ export class AuthService {
     return from(promise);
   }
 
+  login(
+    email: string,
+    password: string
+  ): Observable<void> {
+    const promise = createUserWithEmailAndPassword(
+      this.firebaseAuth,
+      email,
+      password
+    ).then(() => {});
+      return from(promise);
+  }
+
   constructor() {}
 }

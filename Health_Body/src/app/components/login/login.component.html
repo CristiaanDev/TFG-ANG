@@ -20,7 +20,9 @@
         class="flex flex-col p-20 rounded-r-2xl justify-center bg-opacity-50 backdrop-blur-2xl"
       >
         <h1 class="text-texto">Iniciar sesión</h1>
-
+        @if (errorMessage) {
+          <p>{{errorMessage}}<p>
+        }
         <div class="p-4">
           <input
             type="email"

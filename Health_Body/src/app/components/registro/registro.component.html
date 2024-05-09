@@ -76,7 +76,12 @@
               defaultHref="/Inicio/log-in"
               class="text-blur font-medium hover:border-b-2 cursor-pointer"
               >Iniciar sesión</a
+
             >
+            @if (errorMessage) {
+              <p>{{errorMessage}}<p>
+            }
+
           </p>
         </div>
       </form>

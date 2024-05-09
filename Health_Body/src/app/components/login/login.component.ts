@@ -32,7 +32,20 @@ export class LoginComponent {
     password: ['', Validators.required],
   });
 
+  errorMessage: string | null = null;
+
+  //https://www.youtube.com/watch?v=586O934xrhQ&t=41s
   onSubmit(): void {
-    console.log('login');
+    const rawForm = this.form.getRawValue()
+    this.authService
+    .login(rawForm.email, rawForm.password)
+    .subscribe({
+      next: () => {
+      this.router.navigateByUrl('/cuenta');
+    },
+    error: (err) => {
+      this.errorMessage = err.code;
+    }
+  });
   }
 }

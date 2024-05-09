@@ -28,12 +28,24 @@ export class RegistroComponent {
   router = inject(Router);
 
   form = this.fb.nonNullable.group({
+    username: ['', Validators.required],
     email: ['', Validators.required],
     password: ['', Validators.required],
   });
 
+  errorMessage: string | null = null;
+
   //https://www.youtube.com/watch?v=586O934xrhQ&t=41s
   onSubmit(): void {
-    const rawForm = this;
+    const rawForm = this.form.getRawValue()
+    this.authService.registro(rawForm.email, rawForm.username, rawForm.password)
+    .subscribe({
+      next: () => {
+      this.router.navigateByUrl('/login');
+    },
+    error: (err) => {
+      this.errorMessage = err.code;
+    }
+  });
   }
 }
