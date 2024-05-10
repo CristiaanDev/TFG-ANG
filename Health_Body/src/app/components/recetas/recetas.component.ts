@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AvisoComponent } from '../aviso/aviso.component';
 import { HeaderComponent } from '../header/header.component';
 import { ApiService } from '../../services/api.service';
 import { RecetasService } from '../../services/recetas.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { FooterComponent } from '../footer/footer.component';
 
 @Component({
@@ -12,9 +12,9 @@ import { FooterComponent } from '../footer/footer.component';
   standalone: true,
   templateUrl: './recetas.component.html',
   styleUrls: ['./recetas.component.scss'],
-  imports: [AvisoComponent, HeaderComponent, NgFor, FooterComponent],
+  imports: [AvisoComponent, HeaderComponent, NgFor, FooterComponent, NgIf],
 })
-export class RecetasComponent {
+export class RecetasComponent implements OnInit {
   datos: any = {};
   showModal: boolean = false;
   selectedProduct: any;
@@ -33,6 +33,22 @@ export class RecetasComponent {
       this.datos = data;
       console.log(this.datos);
     });
+  }
+  getIngredientes(datos: any): string[] {
+    const ingredientes: string[] = [];
+    for (let i = 1; i <= 20; i++) {
+      const ingrediente = datos[`strIngredient${i}`];
+      const medida = datos[`strMeasure${i}`];
+      if (
+        ingrediente &&
+        ingrediente.trim() !== '' &&
+        medida &&
+        medida.trim() !== ''
+      ) {
+        ingredientes.push(`${ingrediente} - ${medida}`);
+      }
+    }
+    return ingredientes;
   }
 
   showPopup(producto: any) {

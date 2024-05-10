@@ -22,9 +22,11 @@
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
     "firebase": "^10.11.0",
+    "ngx-swiper-wrapper": "^10.0.0",
     "primeicons": "^7.0.0",
     "primeng": "^17.14.1",
     "rxjs": "~7.8.0",
+    "swiper": "^11.1.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
