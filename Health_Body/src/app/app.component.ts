@@ -3,13 +3,14 @@ import { RouterOutlet } from '@angular/router';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { RecetasComponent } from './components/recetas/recetas.component';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, InicioComponent, CuentaComponent, RecetasComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'HEALTH BODY';

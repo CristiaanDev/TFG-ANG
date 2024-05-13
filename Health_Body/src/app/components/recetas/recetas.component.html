@@ -2,8 +2,10 @@
 <app-header></app-header>
 
 <main class="h-auto flex flex-col justify-center">
-  <aside class="flex flex-col h-auto bg-silver p-6">
-    <section class="flex flex-col justify-center mt-14 m-4">
+  <aside class="flex flex-col h-auto bg-silver min-h-screen p-6">
+    <section
+      class="flex flex-col justify-center ml-32 mr-32 pl-20 pr-20 mt-14 m-4"
+    >
       <span class="flex justify-center text-4xl mb-20 text-center font-medium">
         Aquí podrás encontrar algunas recetas que te podrían facilitar la dieta
         y conseguir tus objetivos
@@ -16,14 +18,22 @@
         fitness como no tan fitness, la elección esta de tu parte.
       </p>
     </section>
-    <section class="flex m-4 justify-center">
-      <input
-        type="text"
-        name="receta"
-        placeholder="Ejemplo: Pizza"
-        id=""
-        class="flex flex-row rounded-3xl bg-pistacho-claro p-2 pl-4 w-3/4 md:w-3/6"
-      />
+    <section class="flex m-4 justify-center w-auto">
+      <form (ngSubmit)="onSubmit()" class="flex flex-row w-full justify-center">
+        <input
+          [(ngModel)]="receta"
+          type="text"
+          name="receta"
+          placeholder="Ejemplo: Pizza"
+          class="flex flex-row rounded-3xl bg-pistacho-claro p-2 pl-4 w-3/4 md:w-3/6"
+        />
+        <button
+          type="submit"
+          class="flex flex-row text-center bg-bg-header rounded-3xl h-auto p-2 pr-4 pl-4 w-auto ml-4 mr-4"
+        >
+          Buscar
+        </button>
+      </form>
     </section>
     <section class="flex flex-col">
       <div

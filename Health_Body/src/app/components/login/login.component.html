@@ -20,15 +20,13 @@
         class="flex flex-col p-20 rounded-r-2xl justify-center bg-opacity-50 backdrop-blur-2xl"
       >
         <h1 class="text-texto">Iniciar sesión</h1>
-        @if (errorMessage) {
-          <p>{{errorMessage}}<p>
-        }
+        <p *ngIf="errorMessage">{{ errorMessage }}</p>
+
         <div class="p-4">
           <input
             type="email"
             name="email"
             formControlName="email"
-            id=""
             required
             placeholder="Correo electrónico"
             class="bg-blur text-base bg-opacity-25 pl-4 pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10"
@@ -41,7 +39,6 @@
             type="password"
             name="password"
             formControlName="password"
-            id=""
             required
             placeholder="Contraseña"
             class="bg-blur text-base bg-opacity-25 pl-4 pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10"

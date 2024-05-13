@@ -1,29 +1,35 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { AvisoComponent } from '../aviso/aviso.component';
 import { ApiService } from '../../services/api.service';
-import { AuthService } from '../../services/auth.service';
-import { PanelPrincipalComponent } from '../panel-principal/panel-principal.component'; // Importa el AuthService
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-cuenta',
+  selector: 'app-buscador-alimentos',
   standalone: true,
-  templateUrl: './cuenta.component.html',
-  styleUrl: './cuenta.component.scss',
-  providers: [AuthService], // Añade AuthService como proveedor aquí
-  imports: [PanelPrincipalComponent, RouterLink],
+  imports: [
+    MatSidenavModule,
+    RouterLink,
+    FormsModule,
+    IconFieldModule,
+    InputIconModule,
+    AvisoComponent,
+    NgFor,
+    NgIf,
+  ],
+  templateUrl: './buscador-alimentos.component.html',
+  styleUrl: './buscador-alimentos.component.scss',
 })
-export class CuentaComponent {
+export class BuscadorAlimentosComponent {
   datos: any = {};
   showModal: boolean = false;
   selectedProduct: any;
+  constructor(private apiService: ApiService) {}
   alimento: string = '';
-
-  constructor(
-    private apiService: ApiService,
-    private authService: AuthService, // Inyecta el AuthService
-    private router: Router // Inyecta el Router
-  ) {}
-
   onSubmit() {
     this.getDatos(this.alimento);
   }
@@ -48,13 +54,8 @@ export class CuentaComponent {
     this.showModal = true;
   }
 
+  // Método para ocultar el modal
   hidePopup() {
     this.showModal = false;
-  }
-
-  logout(): void {
-    this.authService.logout().subscribe(() => {
-      this.router.navigateByUrl('/login'); // Redirige a la página de inicio después del logout
-    });
   }
 }

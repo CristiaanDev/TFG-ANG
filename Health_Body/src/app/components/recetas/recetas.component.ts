@@ -7,12 +7,21 @@ import { RecetasService } from '../../services/recetas.service';
 import { NgFor, NgIf } from '@angular/common';
 import { FooterComponent } from '../footer/footer.component';
 
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-recetas',
   standalone: true,
   templateUrl: './recetas.component.html',
   styleUrls: ['./recetas.component.scss'],
-  imports: [AvisoComponent, HeaderComponent, NgFor, FooterComponent, NgIf],
+  imports: [
+    AvisoComponent,
+    HeaderComponent,
+    NgFor,
+    FooterComponent,
+    NgIf,
+    FormsModule,
+  ],
 })
 export class RecetasComponent implements OnInit {
   datos: any = {};
@@ -20,20 +29,24 @@ export class RecetasComponent implements OnInit {
   selectedProduct: any;
   constructor(private recetasService: RecetasService) {}
 
+  receta: string = '';
+  onSubmit() {
+    this.getDatos(this.receta);
+  }
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     //this.getRecetas();
-    this.getDatos();
+    //this.getDatos();
   }
 
-  getDatos() {
-    const alimento = 'pizza'; // Nombre del alimento
-    this.recetasService.getData(alimento).subscribe((data) => {
+  getDatos(receta: string) {
+    this.recetasService.getData(receta).subscribe((data) => {
       this.datos = data;
       console.log(this.datos);
     });
   }
+
   getIngredientes(datos: any): string[] {
     const ingredientes: string[] = [];
     for (let i = 1; i <= 20; i++) {

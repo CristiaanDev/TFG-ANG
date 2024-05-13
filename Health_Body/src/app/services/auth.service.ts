@@ -1,17 +1,39 @@
 import { Injectable, inject } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
+import { Auth, authState } from '@angular/fire/auth';
 import {
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
   updateCurrentUser,
+  getAuth,
   updateProfile,
 } from 'firebase/auth';
-import { Observable, from } from 'rxjs';
+import { Observable, from, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  constructor(private auth: Auth) {}
+
   firebaseAuth = inject(Auth);
+
+  /////////////////////////// AUTENTIFICACIÓN ///////////////////////////
+
+  login(email: string, password: string): Observable<void> {
+    const promise = signInWithEmailAndPassword(
+      this.firebaseAuth,
+      email,
+      password
+    ).then(() => {});
+    return from(promise);
+  }
+
+  currentUserDisplayName(): Observable<string | null> {
+    return authState(this.auth).pipe(
+      map((user) => (user ? user.displayName || 'Usuario sin nombre' : null))
+    );
+  }
 
   registro(
     email: string,
@@ -29,17 +51,8 @@ export class AuthService {
     return from(promise);
   }
 
-  login(
-    email: string,
-    password: string
-  ): Observable<void> {
-    const promise = createUserWithEmailAndPassword(
-      this.firebaseAuth,
-      email,
-      password
-    ).then(() => {});
-      return from(promise);
+  logout(): Observable<void> {
+    const promise = signOut(this.firebaseAuth);
+    return from(promise);
   }
-
-  constructor() {}
 }

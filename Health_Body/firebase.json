@@ -3,7 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "public": "dist/browser/Health_Body",
+    "public": "dist/Health_Body/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
