@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth, authState } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -14,11 +15,13 @@ import { Observable, from, map } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth, private router: Router) {}
 
   firebaseAuth = inject(Auth);
 
-  /////////////////////////// AUTENTIFICACIÓN ///////////////////////////
+  isAuth() {
+    return true;
+  }
 
   login(email: string, password: string): Observable<void> {
     const promise = signInWithEmailAndPassword(

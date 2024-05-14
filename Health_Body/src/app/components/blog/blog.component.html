@@ -1,179 +1,215 @@
 <app-aviso></app-aviso>
 <app-header></app-header>
 
-<div class="main flex justify-center text-center">
-  <div class="container flex flex-col justify-center mt-12 mb-12">
-    <span> </span>
+<main class="bg-white min-h-screen mt-8 pt-8 pb-8">
+  <div class="container mx-auto px-4">
+    <!-- Encabezado -->
+    <header class="text-center mb-10">
+      <span class="text-4xl font-bold text-texto mb-4">
+        El Arte de la Alimentación Saludable
+      </span>
+      <p class="text-xl text-texto">
+        Explora consejos prácticos, recetas nutritivas y las últimas
+        investigaciones para transformar tu vida a través de la alimentación.
+      </p>
+    </header>
 
-    <section>
-      <h1>Introducción a la nutrición saludable</h1>
-      <div class="flex flex-row justify-evenly text-start font-normal text-xl">
-        <p class="w-96 h-auto">
-          Bienvenido a nuestro blog sobre nutrición saludable. En esta sección,
-          te guiaremos a través de los conceptos básicos de la nutrición para
-          ayudarte a comprender la importancia de una alimentación equilibrada y
-          sus beneficios para la salud.
-        </p>
-        <p class="w-96 h-auto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-          quibusdam ad nostrum magnam beatae harum in animi placeat recusandae,
-          labore itaque, iusto enim voluptatum numquam obcaecati autem, libero
-          consequuntur voluptates?
-        </p>
-      </div>
-    </section>
-    <section>
-      <h2>Desayunos saludables para empezar bien el día</h2>
-      <div class="flex flex-row justify-evenly text-start font-normal text-xl">
-        <p class="w-96 h-auto">
-          El desayuno es la comida más importante del día, ¡y también la más
-          deliciosa! Descubre nuestras recetas nutritivas y deliciosas para
-          comenzar tu día con energía y vitalidad. Desde batidos energizantes
-          hasta avena con frutas frescas, tenemos opciones para todos los gustos
-          y necesidades dietéticas.
-        </p>
-        <p class="w-96 h-auto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-          quibusdam ad nostrum magnam beatae harum in animi placeat recusandae,
-          labore itaque, iusto enim voluptatum numquam obcaecati autem, libero
-          consequuntur voluptates?
-        </p>
-      </div>
-    </section>
-    <section>
-      <h2>
-        Domina tus antojos: estrategias para resistir tentaciones alimenticias
-      </h2>
-      <div class="flex flex-row justify-evenly text-start font-normal text-xl">
-        <p class="w-96 h-auto">
-          Todos enfrentamos antojos y tentaciones alimenticias, pero ¿cómo
-          podemos resistirnos y mantenernos en el camino hacia una alimentación
-          saludable? Descubre nuestras estrategias probadas para superar los
-          antojos y tomar decisiones conscientes que apoyen tus objetivos de
-          salud.
-        </p>
-        <p class="w-96 h-auto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-          quibusdam ad nostrum magnam beatae harum in animi placeat recusandae,
-          labore itaque, iusto enim voluptatum numquam obcaecati autem, libero
-          consequuntur voluptates?
-        </p>
-      </div>
+    <!-- Sección de Nutrición Esencial -->
+    <section class="mb-12">
+      <span
+        class="flex justify-center text-3xl font-bold text-center text-texto mb-6"
+      >
+        Fundamentos de la Nutrición
+      </span>
+      <p
+        class="text-lg text-texto bg-white shadow-lg rounded-lg p-6 border border-bg-header"
+      >
+        La nutrición adecuada es la base de un estilo de vida saludable.
+        Comprender los macronutrientes y micronutrientes esenciales puede
+        ayudarte a hacer elecciones informadas que benefician tu salud a largo
+        plazo. Desde balancear tus comidas con las proporciones adecuadas de
+        proteínas, grasas y carbohidratos hasta seleccionar los mejores
+        alimentos para tu bienestar, cada decisión alimenticia cuenta en tu
+        camino hacia una vida más sana y energética.
+      </p>
     </section>
 
-    <div class="grid justify-center mt-20">
-      <div class="grid grid-cols-4 gap-12">
-        <div class="col">
-          <div class="card" style="cursor: pointer">
-            <div class="image-box">
-              <a
-                href="https://www.instagram.com/cipfpcheste/?hl=es"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img src="../../assets/img/cocinera1.jpeg" alt="" />
-              </a>
-            </div>
-            <div class="text-box">
-              <div class="main"><span>Marta</span></div>
-              <div class="sub"><span>&#64;Sancez_Marta</span></div>
+    <!-- Sección de Recetas Saludables -->
+    <section class="mb-12">
+      <span
+        class="flex justify-center text-3xl font-bold text-center text-texto mb-6"
+      >
+        Recetas Saludables para Cada Día
+      </span>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white shadow-lg rounded-lg p-6 border border-bg-header">
+          <span class="text-xl font-semibold mb-2 text-pistacho">
+            Desayuno: Smoothie Verde Detox
+          </span>
+          <p class="text-texto">
+            Empieza tu día con un chute de energía y nutrientes gracias a este
+            delicioso y refrescante smoothie. Rico en antioxidantes y fibra, es
+            el desayuno perfecto para depurar tu cuerpo y cargar las pilas.
+          </p>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6 border border-bg-header">
+          <span class="text-xl font-semibold mb-2 text-tahiti">
+            Almuerzo: Ensalada Mediterránea
+          </span>
+          <p class="text-texto">
+            Ligera, nutritiva y sumamente deliciosa, esta ensalada combina los
+            sabores del Mediterráneo para crear un almuerzo que no solo
+            satisface, sino que también nutre.
+          </p>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6 border border-bg-header">
+          <span class="text-xl font-semibold mb-2 text-tahiti">
+            Cena: Salmón al Horno con Quinoa
+          </span>
+          <p class="text-texto">
+            Disfruta de una cena rica en omega-3 y proteínas con este salmón al
+            horno. Acompañado de quinoa, un superalimento, es la cena perfecta
+            para terminar el día de manera saludable.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Bienestar y Dieta -->
+    <section class="mb-12">
+      <span
+        class="flex justify-center text-3xl font-bold text-center text-texto mb-6"
+      >
+        Estrategias para un Bienestar Integral
+      </span>
+      <p
+        class="text-lg text-texto bg-white shadow-lg rounded-lg p-6 border border-bg-header"
+      >
+        Más allá de la comida, el bienestar integral incluye gestionar el
+        estrés, dormir bien y mantener una actividad física regular. Descubre
+        cómo pequeños cambios en tu rutina diaria pueden mejorar
+        significativamente tu salud mental y física, complementando tu dieta
+        saludable.
+      </p>
+    </section>
+
+    <div class="grid justify-center">
+      <!--          CARDS INFLUENCERS           -->
+
+      <div class="grid justify-center">
+        <div class="grid grid-cols-4 gap-20">
+          <div class="col">
+            <div class="card" style="cursor: pointer">
+              <div class="image-box">
+                <a
+                  href="https://www.instagram.com/cipfpcheste/?hl=es"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src="../../assets/img/cocinera1.jpeg" alt="" />
+                </a>
+              </div>
+              <div class="text-box">
+                <div class="main"><span>Marta</span></div>
+                <div class="sub"><span>&#64;Sancez_Marta</span></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <div class="card" style="cursor: pointer">
-            <div class="image-box">
-              <a href="">
-                <img src="../../assets/img/cocinero3.jpeg" alt="" />
-              </a>
-            </div>
-            <div class="text-box">
-              <div class="main"><span>Somchai</span></div>
-              <div class="sub"><span>&#64;SomchaiThai</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card" style="cursor: pointer">
-            <div class="image-box">
-              <a href="">
-                <img src="../../assets/img/cocinera2.jpeg" alt="" />
-              </a>
-            </div>
-            <div class="text-box">
-              <div class="main"><span>Laura</span></div>
-              <div class="sub"><span>&#64;LePetitDejuner</span></div>
+          <div class="col">
+            <div class="card" style="cursor: pointer">
+              <div class="image-box">
+                <a href="">
+                  <img src="../../assets/img/cocinero3.jpeg" alt="" />
+                </a>
+              </div>
+              <div class="text-box">
+                <div class="main"><span>Somchai</span></div>
+                <div class="sub"><span>&#64;SomchaiThai</span></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <div class="card" style="cursor: pointer">
-            <div class="image-box">
-              <a href="">
-                <img src="../../assets/img/cocinero2.jpeg" alt="" />
-              </a>
-            </div>
-            <div class="text-box">
-              <div class="main"><span>Mario</span></div>
-              <div class="sub"><span>&#64;CoProfM</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card" style="cursor: pointer">
-            <div class="image-box">
-              <a href="">
-                <img src="../../assets/img/cocinero1.jpg" alt="" />
-              </a>
-            </div>
-            <div class="text-box">
-              <div class="main"><span>Angelo</span></div>
-              <div class="sub"><span>&#64;SienteItalia</span></div>
+          <div class="col">
+            <div class="card" style="cursor: pointer">
+              <div class="image-box">
+                <a href="">
+                  <img src="../../assets/img/cocinera2.jpeg" alt="" />
+                </a>
+              </div>
+              <div class="text-box">
+                <div class="main"><span>Laura</span></div>
+                <div class="sub"><span>&#64;LePetitDejuner</span></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <div class="card" style="cursor: pointer">
-            <div class="image-box">
-              <a href="">
-                <img src="../../assets/img/cocinera3.jpeg" alt="" />
-              </a>
-            </div>
-            <div class="text-box">
-              <div class="main"><span>Susana</span></div>
-              <div class="sub"><span>&#64;SweetKitchen</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card" style="cursor: pointer">
-            <div class="image-box">
-              <a href="">
-                <img src="../../assets/img/cocinero4.jpeg" alt="" />
-              </a>
-            </div>
-            <div class="text-box">
-              <div class="main"><span>Luca</span></div>
-              <div class="sub"><span>&#64;ElAsadito</span></div>
+          <div class="col">
+            <div class="card" style="cursor: pointer">
+              <div class="image-box">
+                <a href="">
+                  <img src="../../assets/img/cocinero2.jpeg" alt="" />
+                </a>
+              </div>
+              <div class="text-box">
+                <div class="main"><span>Mario</span></div>
+                <div class="sub"><span>&#64;CoProfM</span></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col">
-          <div class="card" style="cursor: pointer">
-            <div class="image-box">
-              <a href="">
-                <img src="../../assets/img/cocinera4.jpeg" alt="" />
-              </a>
+          <div class="col">
+            <div class="card" style="cursor: pointer">
+              <div class="image-box">
+                <a href="">
+                  <img src="../../assets/img/cocinero1.jpg" alt="" />
+                </a>
+              </div>
+              <div class="text-box">
+                <div class="main"><span>Angelo</span></div>
+                <div class="sub"><span>&#64;SienteItalia</span></div>
+              </div>
             </div>
-            <div class="text-box">
-              <div class="main"><span>Paula</span></div>
-              <div class="sub"><span>&#64;AmorRepostero</span></div>
+          </div>
+          <div class="col">
+            <div class="card" style="cursor: pointer">
+              <div class="image-box">
+                <a href="">
+                  <img src="../../assets/img/cocinera3.jpeg" alt="" />
+                </a>
+              </div>
+              <div class="text-box">
+                <div class="main"><span>Susana</span></div>
+                <div class="sub"><span>&#64;SweetKitchen</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="cursor: pointer">
+              <div class="image-box">
+                <a href="">
+                  <img src="../../assets/img/cocinero4.jpeg" alt="" />
+                </a>
+              </div>
+              <div class="text-box">
+                <div class="main"><span>Luca</span></div>
+                <div class="sub"><span>&#64;ElAsadito</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card" style="cursor: pointer">
+              <div class="image-box">
+                <a href="">
+                  <img src="../../assets/img/cocinera4.jpeg" alt="" />
+                </a>
+              </div>
+              <div class="text-box">
+                <div class="main"><span>Paula</span></div>
+                <div class="sub"><span>&#64;AmorRepostero</span></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</main>
 
 <app-footer></app-footer>

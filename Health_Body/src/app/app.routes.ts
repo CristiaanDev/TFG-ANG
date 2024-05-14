@@ -1,41 +1,23 @@
 import { Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
+import { authGuard } from './auth.guard';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { BlogComponent } from './components/blog/blog.component';
+import { RecetasComponent } from './components/recetas/recetas.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { CuentaComponent } from './components/cuenta/cuenta.component';
 
 export const routes: Routes = [
-  {
-    path: 'Inicio',
-    loadComponent: () => import('./components/inicio/inicio.component').then((m) => m.InicioComponent),
-  },
   {
     path: '',
     redirectTo: 'Inicio',
     pathMatch: 'full',
   },
-  {
-    path: 'cuenta',
-    loadComponent: () => import('./components/cuenta/cuenta.component').then((m) => m.CuentaComponent),
-  },
-  {
-    path: 'login',
-    loadComponent: () => import('./components/login/login.component').then((m) => m.LoginComponent),
-  },
-  {
-    path: 'recetas',
-    loadComponent: () => import('./components/recetas/recetas.component').then((m) => m.RecetasComponent),
-  },
-  {
-    path: 'blog',
-    loadComponent: () => import('./components/blog/blog.component').then((m) => m.BlogComponent),
-  },
-  {
-    path: 'aviso',
-    loadComponent: () => import('./components/aviso/aviso.component').then((m) => m.AvisoComponent),
-  },{
-    path: 'recuperar-contraseña',
-    loadComponent: () => import('./components/recuperar-password/recuperar-password.component').then((m) => m.RecuperarPasswordComponent),
-  },
-  {
-    path: 'registro',
-    loadComponent: () => import('./components/registro/registro.component').then((m) => m.RegistroComponent),
-  },
-
+  { path: 'Inicio', component: InicioComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'recetas', component: RecetasComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'aviso', component: InicioComponent },
+  { path: 'cuenta', component: CuentaComponent, canActivate: [authGuard] },
 ];

@@ -2,15 +2,16 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
-import { PanelPrincipalComponent } from '../panel-principal/panel-principal.component'; // Importa el AuthService
+import { PanelPrincipalComponent } from '../panel-principal/panel-principal.component';
+import { BuscadorAlimentosComponent } from '../buscador-alimentos/buscador-alimentos.component'; // Importa el AuthService
 
 @Component({
   selector: 'app-cuenta',
   standalone: true,
   templateUrl: './cuenta.component.html',
   styleUrl: './cuenta.component.scss',
-  providers: [AuthService], // Añade AuthService como proveedor aquí
-  imports: [PanelPrincipalComponent, RouterLink],
+  providers: [AuthService],
+  imports: [PanelPrincipalComponent, RouterLink, BuscadorAlimentosComponent],
 })
 export class CuentaComponent {
   datos: any = {};

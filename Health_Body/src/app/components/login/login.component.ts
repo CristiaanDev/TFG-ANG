@@ -44,9 +44,11 @@ export class LoginComponent {
     this.authService.login(rawForm.email, rawForm.password).subscribe({
       next: () => {
         this.router.navigateByUrl('/cuenta');
+        return true;
       },
       error: (err) => {
         this.errorMessage = err.code;
+        return false;
       },
     });
   }
