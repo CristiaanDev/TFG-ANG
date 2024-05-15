@@ -1,46 +1,78 @@
 <main
-  class="flex flex-row min-h-screen min-w-7xl bg-[url(./assets/img/cool-background.png)]"
+  class="flex flex-col md:flex-row min-h-screen min-w-7xl bg-[url(./assets/img/cool-background.png)]"
 >
   <aside
-    class="flex flex-col w-1/5 p-4 border-r-2 drop-shadow-2xl border-r-green-600 bg-slate-100"
+    class="flex flex-col w-full md:w-1/5 p-4 border-b-2 md:border-b-0 md:border-r-2 drop-shadow-2xl border-green-600 bg-slate-100"
   >
-    <section class="flex flex-row justify-center mt-2">
-      <img
-        src="./assets/img/LogoTexto.png"
-        alt="logo"
-        class="w-auto h-10 text-center cursor-pointer"
-        routerLink="/Inicio"
-      />
-      <img
-        src="./assets/img/LogoSTexto.png"
-        alt="logo"
-        class="w-auto h-10 text-center cursor-pointer"
-        routerLink="/Inicio"
-      />
+    <section
+      class="flex flex-row justify-between items-center mt-2 md:justify-center"
+    >
+      <div class="flex items-center">
+        <img
+          src="./assets/img/LogoTexto.png"
+          alt="logo"
+          class="w-auto h-10 text-center cursor-pointer"
+          routerLink="/Inicio"
+        />
+        <img
+          src="./assets/img/LogoSTexto.png"
+          alt="logo"
+          class="w-auto h-10 text-center cursor-pointer"
+          routerLink="/Inicio"
+        />
+      </div>
+      <button class="md:hidden text-black" (click)="toggleMenu()">
+        <!-- Icono de menú hamburguesa -->
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"
+          ></path>
+        </svg>
+      </button>
     </section>
-    <section class="flex flex-col mt-52">
+    <section
+      [ngClass]="{
+        block: isMenuOpen,
+        hidden: !isMenuOpen,
+        flex: isLargeScreen
+      }"
+      class="flex-col mt-4 md:mt-52"
+    >
       <button
+        (click)="setActiveComponent('panel-principal')"
         class="flex flex-col text-start text-lg font-medium p-4 m-2 justify-center h-12 rounded-lg cursor-pointer hover:bg-pistacho-claro focus-within:text-rojo focus-within:bg-pistacho focus-within:drop-shadow-md"
       >
         <span class="i-ri-menu-search-line"></span> Panel principal
       </button>
       <button
+        (click)="setActiveComponent('buscar-alimento')"
         class="flex flex-col text-start text-lg font-medium p-4 m-2 justify-center h-12 rounded-lg cursor-pointer hover:bg-pistacho-claro focus-within:text-rojo focus-within:bg-pistacho focus-within:drop-shadow-md"
       >
         Buscar alimento
       </button>
       <button
+        (click)="setActiveComponent('menu-semanal')"
         class="flex flex-col text-start text-lg font-medium p-4 m-2 justify-center h-12 rounded-lg cursor-pointer hover:bg-pistacho-claro focus-within:text-rojo focus-within:bg-pistacho focus-within:drop-shadow-md"
       >
         Menú semanal
       </button>
       <button
+        (click)="setActiveComponent('menus-totales')"
         class="flex flex-col text-start text-lg font-medium p-4 m-2 justify-center h-12 rounded-lg cursor-pointer hover:bg-pistacho-claro focus-within:text-rojo focus-within:bg-pistacho focus-within:drop-shadow-md"
       >
         Menús totales
       </button>
       <button
-        (click)="logout()"
+        (click)="setActiveComponent('cerrar-sesion')"
         class="flex flex-col text-start text-lg font-medium p-4 m-2 justify-center h-12 rounded-lg cursor-pointer hover:bg-pistacho-claro focus-within:text-rojo focus-within:bg-pistacho focus-within:drop-shadow-md"
       >
         Cerrar sesión
@@ -48,8 +80,18 @@
     </section>
   </aside>
   <aside
-    class="flex flex-col w-4/5 m-6 rounded-lg p-8 bg-slate-100 border-2 border-green-600 text-black relative"
+    class="flex flex-col w-full md:w-4/5 m-6 rounded-lg p-8 bg-slate-100 border-2 border-green-600 text-black relative"
   >
-    <app-panel-principal></app-panel-principal>
+    <ng-container [ngSwitch]="activeComponent">
+      <app-panel-principal
+        *ngSwitchCase="'panel-principal'"
+      ></app-panel-principal>
+      <app-buscador-alimentos
+        *ngSwitchCase="'buscar-alimento'"
+      ></app-buscador-alimentos>
+      <app-menu-semanal *ngSwitchCase="'menu-semanal'"></app-menu-semanal>
+      <!--<app-menus-totales *ngSwitchCase="'menus-totales'"></app-menus-totales>
+      <app-cerrar-sesion *ngSwitchCase="'cerrar-sesion'"></app-cerrar-sesion>-->
+    </ng-container>
   </aside>
 </main>

@@ -5,9 +5,9 @@ import { FooterComponent } from '../footer/footer.component';
 import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
-import { NgForm, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -21,35 +21,8 @@ import { NgFor, NgIf } from '@angular/common';
     FooterComponent,
     RouterLink,
     NgIf,
+    FormsModule,
+    CommonModule,
   ],
 })
-export class LoginComponent {
-  constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private authService: AuthService,
-    private router: Router
-  ) {}
-
-  form = this.fb.nonNullable.group({
-    email: ['', Validators.required],
-    password: ['', Validators.required],
-  });
-
-  errorMessage: string | null = null;
-
-  //https://www.youtube.com/watch?v=586O934xrhQ&t=41s
-  onSubmit(): void {
-    const rawForm = this.form.getRawValue();
-    this.authService.login(rawForm.email, rawForm.password).subscribe({
-      next: () => {
-        this.router.navigateByUrl('/cuenta');
-        return true;
-      },
-      error: (err) => {
-        this.errorMessage = err.code;
-        return false;
-      },
-    });
-  }
-}
+export class LoginComponent {}

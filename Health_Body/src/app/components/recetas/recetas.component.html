@@ -2,34 +2,37 @@
 <app-header></app-header>
 
 <main class="h-auto flex flex-col justify-center">
-  <aside class="flex flex-col h-auto bg-silver min-h-screen p-6">
-    <section
-      class="flex flex-col justify-center ml-32 mr-32 pl-20 pr-20 mt-14 m-4"
-    >
-      <span class="flex justify-center text-4xl mb-20 text-center font-medium">
+  <aside class="flex flex-col h-auto bg-white min-h-screen p-6">
+    <section class="flex flex-col justify-center mx-4 md:mx-32 mt-14">
+      <span
+        class="text-2xl sm:text-3xl md:text-4xl mb-8 text-center font-medium"
+      >
         Aquí podrás encontrar algunas recetas que te podrían facilitar la dieta
         y conseguir tus objetivos
       </span>
-      <p class="flex justify-center text-2xl">
-        Claramente sabemos que el hecho de hacer dieta muchas veces no es facil,
-        pero aquí vamos a intentar facilitarte las cosas lo maximo posible. Más
+      <p class="text-base sm:text-lg md:text-2xl text-center">
+        Claramente sabemos que el hecho de hacer dieta muchas veces no es fácil,
+        pero aquí vamos a intentar facilitarte las cosas lo máximo posible. Más
         abajo puedes encontrar un buscador de recetas con el cual podrás
-        encontrar todo tipo de recetas, pero fijate bien, hay recetas tanto
-        fitness como no tan fitness, la elección esta de tu parte.
+        encontrar todo tipo de recetas, pero fíjate bien, hay recetas tanto
+        fitness como no tan fitness, la elección está de tu parte.
       </p>
     </section>
     <section class="flex m-4 justify-center w-auto">
-      <form (ngSubmit)="onSubmit()" class="flex flex-row w-full justify-center">
+      <form
+        (ngSubmit)="onSubmit()"
+        class="flex flex-col md:flex-row w-full justify-center"
+      >
         <input
           [(ngModel)]="receta"
           type="text"
           name="receta"
           placeholder="Ejemplo: Pizza"
-          class="flex flex-row rounded-3xl bg-pistacho-claro p-2 pl-4 w-3/4 md:w-3/6"
+          class="rounded-3xl bg-pistacho-claro p-2 pl-4 w-full md:w-3/6 mb-4 md:mb-0"
         />
         <button
           type="submit"
-          class="flex flex-row text-center bg-bg-header rounded-3xl h-auto p-2 pr-4 pl-4 w-auto ml-4 mr-4"
+          class="text-center bg-bg-header rounded-3xl h-auto p-2 pr-4 pl-4 w-auto ml-0 md:ml-4"
         >
           Buscar
         </button>
@@ -38,7 +41,7 @@
     <section class="flex flex-col">
       <div
         *ngFor="let datos of datos?.meals; let i = index"
-        class="flex flex-col md:flex-row ml-4 md:ml-0 mr-4 md:mr-0 mt-6 mb-10 md:space-x-6 lg:space-x-12 h-auto shadow-2xl bg-white p-4 rounded-lg"
+        class="flex flex-col md:flex-row ml-4 md:ml-0 mr-4 md:mr-0 mt-6 mb-10 md:space-x-6 lg:space-x-12 h-auto shadow-2xl border-2 border-bg-header bg-opacity-20 bg-pistacho-claro p-4 rounded-lg"
       >
         <div class="flex justify-center md:w-1/3">
           <img

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common'; // Importar CommonModule
 import { AuthService } from '../../services/auth.service'; // Asegúrate de que la ruta es correcta
@@ -16,4 +16,20 @@ import { AuthService } from '../../services/auth.service'; // Asegúrate de que 
 })
 export class HeaderComponent {
   constructor(public authService: AuthService) {}
+
+  isMenuOpen = false;
+  isLargeScreen = false;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isLargeScreen = event.target.innerWidth >= 768;
+  }
+
+  ngOnInit() {
+    this.isLargeScreen = window.innerWidth >= 768;
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 }

@@ -2,18 +2,18 @@
   <h1 class="flex text-start text-black">
     <strong>Buscador de alimentos</strong>
   </h1>
-  <form (ngSubmit)="onSubmit()" class="flex flex-row">
+  <form (ngSubmit)="onSubmit()" class="flex flex-col sm:flex-row">
     <input
       [(ngModel)]="alimento"
       type="text"
       name="barras"
       id="barras"
       placeholder="Ejemplo: Arroz"
-      class="flex flex-row justify-between border-2 rounded-lg p-1 w-96 h-8 bg-pistacho-claro"
+      class="flex justify-between border-2 rounded-lg p-1 w-full sm:w-80 h-8 bg-pistacho-claro mb-2 sm:mb-0 sm:mr-4"
     />
     <button
       type="submit"
-      class="flex flex-col text-texto font-medium justify-center mx-6 rounded-md p-2 h-8 bg-pistacho text-lg"
+      class="flex text-texto font-medium justify-center rounded-md p-2 h-8 bg-pistacho text-lg w-full sm:w-auto"
     >
       Buscar
     </button>
@@ -23,7 +23,9 @@
 <section
   class="bg-bg-header rounded-lg p-4 max-h-[calc(95vh-200px)] overflow-y-auto"
 >
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4"
+  >
     <div *ngFor="let producto of datos.products; let i = index">
       <div class="bg-white rounded-lg shadow-md h-72">
         <div class="bg-pistacho text-texto text-sm text-center p-2">

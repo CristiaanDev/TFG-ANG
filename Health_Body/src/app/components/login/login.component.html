@@ -2,66 +2,65 @@
 <app-header></app-header>
 <main class="h-screen w-full justify-center flex flex-row mb-0">
   <aside
-    class="flex flex-col justify-center rounded-3xl w-full bg-cover bg-no-repeat h-full"
+    class="flex flex-col justify-center w-full bg-cover bg-no-repeat h-full"
     style="
       background-image: url('../../assets/img/pexels-ella-olsson-1640770.jpg');
     "
   >
-    <div class="flex flex-row justify-center text-center h-auto">
-      <!--Hacer quee cuando no esta registrado y quiera estar registrado, haga como una transicion de pagina entre el login y el registro-->
-      <div class="flex justify-center rounded-l-2xl bg-bg-header">
-        <img src="../../assets/img/Computer login-rafiki.svg" alt="" />
+    <div
+      class="flex flex-col md:flex-row justify-center text-center h-auto p-4 md:m-20"
+    >
+      <div class="hidden md:flex justify-center rounded-l-2xl bg-bg-header">
+        <img
+          src="../../assets/img/Computer login-rafiki.svg"
+          alt="login img"
+          class="w-full h-full object-contain"
+        />
       </div>
 
       <form
-        [formGroup]="form"
-        (ngSubmit)="onSubmit()"
-        action=""
-        class="flex flex-col p-20 rounded-r-2xl justify-center bg-opacity-50 backdrop-blur-2xl"
+        class="flex flex-col p-4 md:p-10 lg:p-20 md:rounded-r-2xl justify-center bg-opacity-50 backdrop-blur-2xl w-full md:w-auto"
       >
-        <h1 class="text-texto">Iniciar sesión</h1>
-        <p *ngIf="errorMessage">{{ errorMessage }}</p>
+        <h1 class="text-texto text-2xl mb-4">Iniciar sesión</h1>
 
-        <div class="p-4">
+        <div class="p-2 md:p-4">
           <input
             type="email"
-            name="email"
             formControlName="email"
             required
             placeholder="Correo electrónico"
-            class="bg-blur text-base bg-opacity-25 pl-4 pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10"
+            class="bg-blur text-base bg-opacity-25 pl-4 pr-4 md:pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10 w-full"
           />
-          <!--<label for="">Correo electrónico:</label>-->
         </div>
 
-        <div class="p-4">
+        <div class="p-2 md:p-4">
           <input
             type="password"
-            name="password"
             formControlName="password"
             required
             placeholder="Contraseña"
-            class="bg-blur text-base bg-opacity-25 pl-4 pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10"
+            class="bg-blur text-base bg-opacity-25 pl-4 pr-4 md:pr-20 border-b-2 border-bg-header rounded-tr-2xl h-10 w-full"
           />
-          <!--<label for="">Contraseña:</label>-->
         </div>
 
-        <div class="p-4">
-          <label for="" class="pr-4 pl-4">
-            <input type="checkbox" />Recuérdame
+        <div
+          class="p-2 md:p-4 flex flex-col md:flex-row items-center md:justify-between"
+        >
+          <label class="flex items-center mb-2 md:mb-0">
+            <input type="checkbox" class="mr-2" /> Recuérdame
           </label>
-          <label for="" class="pr-4 pl-4"> Recuperar contraseña </label>
+          <a href="#" class="text-blur hover:underline">Recuperar contraseña</a>
         </div>
+
         <button class="bg-pistacho p-2 rounded-3xl mb-4 text-xl" type="submit">
           Entrar
         </button>
 
-        <div class="">
+        <div>
           <p>
-            No tienes cuenta ?
+            ¿No tienes cuenta?
             <a
               routerLink="/registro"
-              defaultHref="/Inicio/log-in"
               class="text-blur font-medium hover:border-b-2 cursor-pointer"
               >Regístrate</a
             >
