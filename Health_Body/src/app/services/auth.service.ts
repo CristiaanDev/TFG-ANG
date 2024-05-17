@@ -1,14 +1,11 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   Auth,
   createUserWithEmailAndPassword,
   updateProfile,
   signInWithEmailAndPassword,
-  user,
-  signOut,
   getAuth,
 } from '@angular/fire/auth';
-import { Observable, from } from 'rxjs';
 import { Firestore, doc, setDoc, getDoc } from '@angular/fire/firestore';
 import { DocumentData, getFirestore } from 'firebase/firestore';
 import { User } from '../user.interface';
@@ -20,22 +17,29 @@ import { UtilesService } from './utiles.service';
 export class AuthService {
   firebaseAuth = inject(Auth);
   firestore = inject(Firestore);
-  user$ = user(this.firebaseAuth);
   utiles = inject(UtilesService);
-  //currentUserSig = signal<UserInterface | null | undefined>(undefined);
 
   logIn(user: User) {
     return signInWithEmailAndPassword(getAuth(), user.email, user.password);
   }
 
   register(user: User) {
-    return createUserWithEmailAndPassword(getAuth(), user.email, user.password);
+    return createUserWithEmailAndPassword(
+      getAuth(),
+      user.email,
+      user.password
+    ).then((res) => {
+      return this.signOut().then(() => res); // Sign out after registration
+    });
   }
 
   signOut() {
-    getAuth().signOut();
-    localStorage.removeItem('user');
-    this.utiles.routerLink('/login');
+    return getAuth()
+      .signOut()
+      .then(() => {
+        localStorage.removeItem('user');
+        this.utiles.routerLink('/login');
+      });
   }
 
   updateUser(displayName: string) {
@@ -51,10 +55,8 @@ export class AuthService {
     return getAuth();
   }
 
-  //////////////          BDD        /////////////////////
-
   setDocument(path: string, data: any) {
-    return setDoc(doc(getFirestore(), path), data);
+    return setDoc(doc(getFirestore(), path), data, { merge: true });
   }
 
   async getDocument(path: string): Promise<DocumentData | undefined> {

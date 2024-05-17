@@ -7,14 +7,12 @@ export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const utiles = inject(UtilesService);
 
-  let user = localStorage.getItem('user');
-
   return new Promise((resolve) => {
-    authService.getAuth().onAuthStateChanged((authGuard) => {
-      if (authGuard) {
+    authService.getAuth().onAuthStateChanged((user) => {
+      if (user) {
         resolve(true);
       } else {
-        utiles.routerLink('/login');
+        authService.signOut();
         resolve(false);
       }
     });

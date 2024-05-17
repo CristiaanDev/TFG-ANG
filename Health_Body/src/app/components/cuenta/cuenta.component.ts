@@ -58,7 +58,7 @@ export class CuentaComponent {
     this.showModal = false;
   }
 
-  activeComponent: string = 'panel-principal';
+  activeComponent: string = 'buscar-alimento';
   isMenuOpen: boolean = false;
   isLargeScreen: boolean = false;
 

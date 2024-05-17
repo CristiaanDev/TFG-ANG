@@ -60,7 +60,6 @@ export class LoginComponent {
         .logIn(this.form.value as User)
         .then((res) => {
           this.getUserInfo(res.user.uid);
-          this.utiles.hideLoading(); // Ocultar el spinner de carga
         })
         .catch((error) => {
           this.utiles.hideLoading(); // Ocultar el spinner de carga en caso de error
@@ -79,14 +78,19 @@ export class LoginComponent {
           if (doc) {
             const user = doc as User;
             this.utiles.saveInLocaleStorage('user', user);
-            this.utiles.routerLink('/cuenta');
+            // Ocultar el spinner de carga
+
+            this.utiles.hideLoading();
             this.form.reset();
             console.log(`${user.username}`);
+            this.utiles.routerLink('/cuenta');
           } else {
+            this.utiles.hideLoading(); // Ocultar el spinner de carga en caso de error
             console.error('No se encontró el documento del usuario');
           }
         })
         .catch((error) => {
+          this.utiles.hideLoading(); // Ocultar el spinner de carga en caso de error
           console.error('Error al registrar usuario:', error);
         });
     }

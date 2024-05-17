@@ -66,43 +66,51 @@ export class RegistroComponent {
               .updateUser(username)
               .then(() => {
                 console.log('Usuario actualizado correctamente');
-                this.utiles.hideLoading();
+                let id = res.user.uid;
+                this.setUserInfo(id);
               })
               .catch((error) => {
                 this.utiles.hideLoading();
+                this.utiles.showToast(
+                  'Error al actualizar usuario: ' + error.message
+                );
                 console.error('Error al actualizar usuario:', error);
               });
           } else {
             this.utiles.hideLoading();
-            console.error('Username no valido');
+            this.utiles.showToast('Username no válido');
+            console.error('Username no válido');
           }
-          let id = res.user.uid;
-          this.form.controls.id.setValue(id);
-          this.setUserInfo(id);
         })
         .catch((error) => {
           this.utiles.hideLoading();
+          this.utiles.showToast('Error al registrar usuario: ' + error.message);
           console.error('Error al registrar usuario:', error);
         });
     }
   }
 
   setUserInfo(id: string) {
-    if (this.form.valid) {
-      let path = `users/${id}`;
-      delete this.form.value.password;
-      this.authService
-        .setDocument(path, this.form.value)
-        .then((res) => {
-          this.utiles.saveInLocaleStorage('user', this.form.value);
-          this.utiles.routerLink('/login');
-          this.form.reset();
+    const userData = {
+      email: this.form.value.email,
+      username: this.form.value.username,
+    };
 
-          console.log(res);
-        })
-        .catch((error) => {
-          console.error('Error al registrar usuario:', error);
-        });
-    }
+    let path = `users/${id}`;
+    this.authService
+      .setDocument(path, userData)
+      .then(() => {
+        this.utiles.hideLoading();
+        this.utiles.routerLink('/login');
+        this.form.reset();
+        console.log('Información del usuario guardada correctamente');
+      })
+      .catch((error) => {
+        this.utiles.hideLoading();
+        this.utiles.showToast(
+          'Error al guardar información del usuario: ' + error.message
+        );
+        console.error('Error al guardar información del usuario:', error);
+      });
   }
 }

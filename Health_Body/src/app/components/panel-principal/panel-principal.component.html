@@ -1,7 +1,3 @@
-<!--informacion actual  objetivos carolias diarias -> prote, hidratos y grasas
-dias de entrenamiento -> calcular las calorías segun actividad barra progress
-semanal, marcar días entrenados para calcular el progress-->
-
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-texto mb-8">
   <div
     class="flex bg-pistacho-claro border-2 border-bg-header bg-opacity-30 shadow-xl rounded-md p-4"
@@ -13,15 +9,15 @@ semanal, marcar días entrenados para calcular el progress-->
         class="rounded-full border-white object-cover w-36 h-36 shadow-2xl border-2"
       />
       <div class="flex flex-col ml-4 text-start">
-        <span class="flex text-xl font-medium mb-2">Nombre</span>
+        <span class="flex text-xl font-medium mb-2">{{ user?.username }}</span>
         <div class="flex flex-row">
           <div class="pr-2">
-            <p>Edad:</p>
-            <p>Peso:</p>
-          </div>
-          <div>
-            <p>23</p>
-            <p>100</p>
+            <p>Edad: {{ user?.age }}</p>
+            <p>Peso: {{ user?.weight }} kg</p>
+            <p>Altura: {{ user?.height }} cm</p>
+            <p>Género: {{ user?.gender }}</p>
+            <p>Actividad: {{ user?.activityLevel }}</p>
+            <p>Objetivo: {{ user?.goal }}</p>
           </div>
         </div>
       </div>

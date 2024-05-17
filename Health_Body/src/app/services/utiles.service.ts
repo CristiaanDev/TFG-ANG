@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from '../user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -32,16 +33,29 @@ export class UtilesService {
   isLoading() {
     return this.loading;
   }
+  saveInLocaleStorage(key: string, value: any) {
+    return localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  getFromLocalStorage(key: string): User | null {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : null;
+  }
 
   routerLink(url: string) {
     return this.router.navigateByUrl(url);
   }
 
-  saveInLocaleStorage(key: string, value: any) {
-    return localStorage.setItem(key, JSON.stringify(value));
+  /*async presentModal(options: ModalOptions) {
+    const modal = await this.modalCtrl.create(options);
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+    if (data) {
+      return data;
+    }
   }
 
-  getFromLocalStorage(key: string) {
-    return localStorage.getItem(key);
-  }
+  dismissModal(data?: any) {
+    return this.modalCtrl.dismiss(data);
+  }*/
 }
