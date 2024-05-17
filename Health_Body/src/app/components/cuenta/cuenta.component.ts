@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
@@ -7,6 +7,7 @@ import { BuscadorAlimentosComponent } from '../buscador-alimentos/buscador-alime
 import { MenuSemanalComponent } from '../menu-semanal/menu-semanal.component'; // Importa el AuthService
 import { NgClass, NgSwitch, NgSwitchCase } from '@angular/common';
 import { FooterComponent } from '../footer/footer.component';
+import { UtilesService } from '../../services/utiles.service';
 
 @Component({
   selector: 'app-cuenta',
@@ -30,11 +31,11 @@ export class CuentaComponent {
   showModal: boolean = false;
   selectedProduct: any;
   alimento: string = '';
+  router = inject(Router);
+  authService = inject(AuthService);
+  utiles = inject(UtilesService);
 
-  constructor(
-    private apiService: ApiService,
-    private router: Router // Inyecta el Router
-  ) {}
+  constructor(private apiService: ApiService) {}
 
   onSubmit() {
     this.getDatos(this.alimento);
@@ -70,8 +71,16 @@ export class CuentaComponent {
   }
 
   ngOnInit() {
+    /*           APARTADO DE NAV LATERAL       */
+    /*           APARTADO DE NAV LATERAL       */
+    /*           APARTADO DE NAV LATERAL       */
+
     this.isLargeScreen = window.innerWidth >= 768;
     this.isMenuOpen = this.isLargeScreen;
+
+    /*           APARTADO DE NAV LATERAL       */
+    /*           APARTADO DE NAV LATERAL       */
+    /*           APARTADO DE NAV LATERAL       */
   }
 
   toggleMenu() {
@@ -80,5 +89,9 @@ export class CuentaComponent {
 
   setActiveComponent(component: string) {
     this.activeComponent = component;
+  }
+
+  logOut() {
+    this.authService.signOut();
   }
 }

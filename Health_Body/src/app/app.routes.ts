@@ -5,6 +5,8 @@ import { BlogComponent } from './components/blog/blog.component';
 import { RecetasComponent } from './components/recetas/recetas.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { CuentaComponent } from './components/cuenta/cuenta.component';
+import { authGuard } from './guards/auth.guard';
+import { nAuthGuard } from './guards/n-auth.guard';
 
 export const routes: Routes = [
   {
@@ -15,8 +17,8 @@ export const routes: Routes = [
   { path: 'Inicio', component: InicioComponent },
   { path: 'blog', component: BlogComponent },
   { path: 'recetas', component: RecetasComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate: [nAuthGuard] },
   { path: 'registro', component: RegistroComponent },
   { path: 'aviso', component: InicioComponent },
-  { path: 'cuenta', component: CuentaComponent },
+  { path: 'cuenta', component: CuentaComponent, canActivate: [authGuard] },
 ];

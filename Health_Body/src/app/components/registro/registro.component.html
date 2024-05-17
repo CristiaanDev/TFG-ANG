@@ -19,6 +19,8 @@
       </div>
 
       <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
         class="flex flex-col p-4 md:p-10 lg:p-20 md:rounded-r-2xl justify-center bg-opacity-50 backdrop-blur-2xl w-full md:w-auto"
       >
         <h1 class="text-texto text-2xl mb-4">Registro</h1>
@@ -53,16 +55,10 @@
           />
         </div>
 
-        <div
-          class="p-2 md:p-4 flex flex-col md:flex-row items-center md:justify-between"
+        <button
+          class="bg-pistacho p-2 mt-2 rounded-3xl mb-4 text-xl"
+          type="submit"
         >
-          <label class="flex items-center mb-2 md:mb-0">
-            <input type="checkbox" class="mr-2" /> Recuérdame
-          </label>
-          <a href="#" class="text-blur hover:underline">Recuperar contraseña</a>
-        </div>
-
-        <button class="bg-pistacho p-2 rounded-3xl mb-4 text-xl" type="submit">
           Registrarse
         </button>
 
