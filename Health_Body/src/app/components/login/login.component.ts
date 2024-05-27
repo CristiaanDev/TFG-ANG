@@ -63,7 +63,7 @@ export class LoginComponent {
         })
         .catch((error) => {
           this.utiles.hideLoading(); // Ocultar el spinner de carga en caso de error
-          this.utiles.showToast('Error al iniciar sesión: ' + error.message);
+          //this.utiles.showToast('Error al iniciar sesión: ' + error.message);
           console.error('Error al iniciar sesión:', error);
         });
     }
