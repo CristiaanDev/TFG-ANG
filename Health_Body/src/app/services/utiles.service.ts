@@ -12,7 +12,7 @@ export class UtilesService {
 
   private loading = false;
 
-  showToast(
+  /*showToast(
     message: string,
     action: string = 'Cerrar',
     duration: number = 3000
@@ -20,7 +20,7 @@ export class UtilesService {
     this.snackBar.open(message, action, {
       duration: duration,
     });
-  }
+  }*/
 
   showLoading() {
     this.loading = true;

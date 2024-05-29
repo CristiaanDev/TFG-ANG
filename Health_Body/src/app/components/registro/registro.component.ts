@@ -71,20 +71,20 @@ export class RegistroComponent {
               })
               .catch((error) => {
                 this.utiles.hideLoading();
-                this.utiles.showToast(
+                /*this.utiles.showToast(
                   'Error al actualizar usuario: ' + error.message
-                );
+                );*/
                 console.error('Error al actualizar usuario:', error);
               });
           } else {
             this.utiles.hideLoading();
-            this.utiles.showToast('Username no válido');
+            /*this.utiles.showToast('Username no válido');*/
             console.error('Username no válido');
           }
         })
         .catch((error) => {
           this.utiles.hideLoading();
-          this.utiles.showToast('Error al registrar usuario: ' + error.message);
+          //this.utiles.showToast('Error al registrar usuario: ' + error.message);
           console.error('Error al registrar usuario:', error);
         });
     }
@@ -107,9 +107,9 @@ export class RegistroComponent {
       })
       .catch((error) => {
         this.utiles.hideLoading();
-        this.utiles.showToast(
+        /*this.utiles.showToast(
           'Error al guardar información del usuario: ' + error.message
-        );
+        );*/
         console.error('Error al guardar información del usuario:', error);
       });
   }
