@@ -85,4 +85,12 @@ export class AuthService {
     const docSnap = await getDoc(docRef);
     return docSnap.exists() ? docSnap.data() : undefined;
   }
+
+  async getUserData(userId: string): Promise<User | undefined> {
+    const docSnap = await getDoc(doc(this.firestore, `users/${userId}`));
+    if (docSnap.exists()) {
+      return docSnap.data() as User;
+    }
+    return undefined;
+  }
 }

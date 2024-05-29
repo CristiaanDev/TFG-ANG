@@ -1,9 +1,5 @@
-<div
-  class="p-4 bg-white rounded-lg shadow-lg border-2 border-texto w-auto mx-auto"
->
-  <h1
-    class="text-xl font-semibold mb-4 rounded-lg text-texto bg-pistacho text-center"
-  >
+<div class="p-4 bg-white rounded-lg shadow-lg border-2 border-texto w-auto mx-auto">
+  <h1 class="text-xl font-semibold mb-4 rounded-lg text-texto bg-pistacho text-center">
     Completar Información del Usuario
   </h1>
   <form [formGroup]="form" class="space-y-4">
@@ -41,24 +37,23 @@
         formControlName="gender"
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       >
-        <option value="Hombre">Hombre</option>
-        <option value="Mujer">Mujer</option>
+        <option value="" disabled selected>Género</option>
+        <option value="Hombre">Masculino</option>
+        <option value="Mujer">Femenino</option>
       </select>
     </div>
     <div>
-      <label for="activityLevel" class="block text-sm font-medium"
-        >Nivel de actividad</label
-      >
+      <label for="activityLevel" class="block text-sm font-medium">Actividad Física</label>
       <select
         id="activityLevel"
         formControlName="activityLevel"
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       >
-        <option value="Sedentaria">Sedentaria</option>
-        <option value="Ligera">Ligera</option>
-        <option value="Moderada">Moderada</option>
-        <option value="Intensa">Intensa</option>
-        <option value="MuyIntensa">Muy Intensa</option>
+        <option value="" disabled selected>Actividad Física</option>
+        <option value="Sedentario">Sedentario</option>
+        <option value="Actividad ligera">Ligeramente activo</option>
+        <option value="Actividad moderada">Moderadamente activo</option>
+        <option value="Muy activo">Muy activo</option>
       </select>
     </div>
     <div>
@@ -68,23 +63,18 @@
         formControlName="goal"
         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
       >
-        <option value="PerderPeso">Perder Peso</option>
-        <option value="MantenerPeso">Mantener Peso</option>
-        <option value="GanarPeso">Ganar Peso</option>
+        <option value="" disabled selected>Objetivo</option>
+        <option value="Perdida de peso">Perder Peso</option>
+        <option value="Mantenimiento">Mantener Peso</option>
+        <option value="Ganancia de peso">Ganar Peso</option>
       </select>
     </div>
   </form>
   <div class="mt-6 flex justify-end space-x-4">
-    <button
-      (click)="cancel()"
-      class="bg-pistacho-claro text-texto px-4 py-2 rounded-md shadow-sm hover:bg-pistacho"
-    >
+    <button (click)="cancel()" class="bg-pistacho-claro text-texto px-4 py-2 rounded-md shadow-sm hover:bg-pistacho">
       Cancelar
     </button>
-    <button
-      (click)="submit()"
-      class="bg-pistacho-claro text-texto px-4 py-2 rounded-md shadow-sm hover:bg-pistacho"
-    >
+    <button (click)="submit()" class="bg-pistacho-claro text-texto px-4 py-2 rounded-md shadow-sm hover:bg-pistacho">
       Guardar
     </button>
   </div>

@@ -12,16 +12,6 @@ export class UtilesService {
 
   private loading = false;
 
-  /*showToast(
-    message: string,
-    action: string = 'Cerrar',
-    duration: number = 3000
-  ) {
-    this.snackBar.open(message, action, {
-      duration: duration,
-    });
-  }*/
-
   showLoading() {
     this.loading = true;
   }
@@ -33,6 +23,7 @@ export class UtilesService {
   isLoading() {
     return this.loading;
   }
+
   saveInLocaleStorage(key: string, value: any) {
     return localStorage.setItem(key, JSON.stringify(value));
   }
@@ -45,17 +36,4 @@ export class UtilesService {
   routerLink(url: string) {
     return this.router.navigateByUrl(url);
   }
-
-  /*async presentModal(options: ModalOptions) {
-    const modal = await this.modalCtrl.create(options);
-    await modal.present();
-    const { data } = await modal.onWillDismiss();
-    if (data) {
-      return data;
-    }
-  }
-
-  dismissModal(data?: any) {
-    return this.modalCtrl.dismiss(data);
-  }*/
 }

@@ -1,33 +1,20 @@
-import { NgIf } from '@angular/common';
 import { Component, Inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
-  ReactiveFormsModule,
   Validators,
+  ReactiveFormsModule,
 } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { RouterLink } from '@angular/router';
-import { AvisoComponent } from '../aviso/aviso.component';
-import { HeaderComponent } from '../header/header.component';
-import { FooterComponent } from '../footer/footer.component';
-import { User } from '../../user.interface';
 import { AuthService } from '../../services/auth.service';
 import { UtilesService } from '../../services/utiles.service';
+import { User } from '../../user.interface';
 
 @Component({
   selector: 'app-completar-usuario',
   standalone: true,
   templateUrl: './completar-usuario.component.html',
-  imports: [
-    FooterComponent,
-    HeaderComponent,
-    AvisoComponent,
-    RouterLink,
-    ReactiveFormsModule,
-    NgIf,
-  ],
-  styleUrls: ['./completar-usuario.component.scss'],
+  imports: [ReactiveFormsModule],
 })
 export class CompletarUsuarioComponent {
   form: FormGroup;
@@ -35,7 +22,7 @@ export class CompletarUsuarioComponent {
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CompletarUsuarioComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: { user: User },
     private authService: AuthService,
     private utiles: UtilesService
   ) {

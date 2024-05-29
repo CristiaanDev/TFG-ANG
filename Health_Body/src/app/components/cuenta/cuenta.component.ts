@@ -1,4 +1,10 @@
-import { Component, HostListener, inject, OnInit } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  inject,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
@@ -8,12 +14,17 @@ import { MenuSemanalComponent } from '../menu-semanal/menu-semanal.component';
 import { NgClass, NgSwitch, NgSwitchCase } from '@angular/common';
 import { FooterComponent } from '../footer/footer.component';
 import { UtilesService } from '../../services/utiles.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CompletarUsuarioComponent } from '../completar-usuario/completar-usuario.component';
+import { Subscription } from 'rxjs';
+import { User as FirebaseUser } from '@angular/fire/auth';
+import { User } from '../../user.interface';
 
 @Component({
   selector: 'app-cuenta',
   standalone: true,
   templateUrl: './cuenta.component.html',
-  styleUrl: './cuenta.component.scss',
+  styleUrls: ['./cuenta.component.scss'],
   providers: [AuthService],
   imports: [
     PanelPrincipalComponent,
@@ -26,7 +37,7 @@ import { UtilesService } from '../../services/utiles.service';
     FooterComponent,
   ],
 })
-export class CuentaComponent implements OnInit {
+export class CuentaComponent implements OnInit, OnDestroy {
   datos: any = {};
   showModal: boolean = false;
   selectedProduct: any;
@@ -34,6 +45,9 @@ export class CuentaComponent implements OnInit {
   router = inject(Router);
   authService = inject(AuthService);
   utiles = inject(UtilesService);
+  dialog = inject(MatDialog);
+
+  private userSubscription!: Subscription;
 
   constructor(private apiService: ApiService) {}
 
@@ -57,7 +71,7 @@ export class CuentaComponent implements OnInit {
     this.showModal = false;
   }
 
-  activeComponent: string = 'buscar-alimento';
+  activeComponent: string = 'panel-principal';
   isMenuOpen: boolean = false;
   isLargeScreen: boolean = false;
 
@@ -73,11 +87,45 @@ export class CuentaComponent implements OnInit {
     this.isLargeScreen = window.innerWidth >= 768;
     this.isMenuOpen = this.isLargeScreen;
 
-    this.authService.currentUser$.subscribe((user) => {
-      if (!user) {
-        this.utiles.routerLink('/login');
+    this.userSubscription = this.authService.currentUser$.subscribe(
+      (user: FirebaseUser | null) => {
+        if (!user) {
+          this.utiles.routerLink('/login');
+        } else {
+          this.authService
+            .getUserData(user.uid)
+            .then((userData: User | undefined) => {
+              const storedUser = { ...userData, id: user.uid };
+              this.utiles.saveInLocaleStorage('user', storedUser);
+              if (
+                !storedUser.age ||
+                !storedUser.weight ||
+                !storedUser.height ||
+                !storedUser.gender ||
+                !storedUser.activityLevel ||
+                !storedUser.goal
+              ) {
+                const dialogRef = this.dialog.open(CompletarUsuarioComponent, {
+                  data: { user: storedUser },
+                  disableClose: true,
+                });
+
+                dialogRef.afterClosed().subscribe((updatedUser: User) => {
+                  if (updatedUser) {
+                    this.utiles.saveInLocaleStorage('user', updatedUser);
+                  }
+                });
+              }
+            });
+        }
       }
-    });
+    );
+  }
+
+  ngOnDestroy(): void {
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
   }
 
   toggleMenu() {
