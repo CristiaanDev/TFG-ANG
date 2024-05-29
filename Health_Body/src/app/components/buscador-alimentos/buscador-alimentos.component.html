@@ -15,6 +15,22 @@
       type="submit"
       class="flex items-center justify-center text-texto font-medium rounded-md p-2 h-8 bg-pistacho text-lg w-full sm:w-auto"
     >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-search"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+        <path d="M21 21l-6 -6" />
+      </svg>
       Buscar
     </button>
   </form>
@@ -28,8 +44,10 @@
   >
     <div *ngFor="let producto of datos.products; let i = index">
       <div class="bg-white rounded-lg shadow-md h-72">
-        <div class="bg-pistacho text-texto text-sm text-center p-2">
-          Good match 72%
+        <div
+          class="bg-pistacho bg-opacity-80 text-texto text-sm text-center p-2 h-auto"
+        >
+          {{ "Recomendación del " + random() + "%" }}
         </div>
         <img
           [src]="producto.image_front_small_url"
@@ -40,12 +58,9 @@
           {{ producto.product_name }}
         </h4>
         <div class="flex flex-row justify-evenly">
-          <button class="bg-pistacho-claro font-medium p-2 rounded-lg">
-            Añadir
-          </button>
           <button
             (click)="showPopup(producto)"
-            class="bg-pistacho-claro font-medium p-2 rounded-lg"
+            class="bg-pistacho font-medium p-2 rounded-lg"
           >
             Ver macros
           </button>
@@ -70,41 +85,53 @@
           Macros
         </div>
         <img
-          [src]="selectedProduct?.image_nutrition_small_url"
+          [src]="selectedProduct?.image_front_small_url"
           alt="Imagen no disponible"
           class="h-72 object-cover w-auto mx-auto p-2"
         />
-        <h2 class="font-semibold text-lg mb-2">
+        <h2
+          class="font-semibold text-lg mb-2 bg-blur bg-opacity-15 rounded-md p-2"
+        >
           {{ selectedProduct?.product_name }}
         </h2>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="bg-gray-100 p-2 rounded-lg">
-            <p class="font-medium">Proteina / 100g:</p>
+        <div
+          class="grid grid-cols-2 gap-4 bg-blur bg-opacity-15 rounded-md p-2"
+        >
+          <div class="bg-gray-100 p-2 rounded-lg shadow-md">
+            <p class="font-semibold border-2 border-rojo p-2 rounded-lg">
+              Proteina / 100g:
+            </p>
             <p>{{ selectedProduct?.nutriments.proteins }}</p>
           </div>
-          <div class="bg-gray-100 p-2 rounded-lg">
-            <p class="font-medium">Grasas / 100g:</p>
+          <div class="p-2 rounded-lg shadow-md">
+            <p class="font-semibold border-2 border-white p-2 rounded-lg">
+              Grasas / 100g:
+            </p>
             <p>{{ selectedProduct?.nutriments.fat }}</p>
           </div>
-          <div class="bg-gray-100 p-2 rounded-lg">
-            <p class="font-medium">Hidratos / 100g:</p>
+          <div class="p-2 rounded-lg shadow-md">
+            <p
+              class="font-semibold border-2 p-2 rounded-lg border-amarillo-alerta"
+            >
+              Hidratos / 100g:
+            </p>
             <p>{{ selectedProduct?.nutriments.carbohydrates }}</p>
           </div>
-          <div class="bg-gray-100 p-2 rounded-lg">
-            <p class="font-medium">Kcal / 100g:</p>
+          <div class="p-2 rounded-lg shadow-md">
+            <p class="font-semibold border-2 p-2 rounded-lg">Kcal / 100g:</p>
             <p>{{ selectedProduct?.nutriments.energy_value }}</p>
           </div>
         </div>
         <div class="flex justify-evenly">
           <button
             (click)="hidePopup()"
-            class="bg-pistacho-claro font-medium text-base p-2 rounded-lg w-32"
+            class="bg-pistacho font-medium text-base p-2 rounded-lg w-32"
           >
             Añadir
           </button>
           <button
             (click)="hidePopup()"
-            class="bg-pistacho-claro font-medium text-base p-2 rounded-lg w-32"
+            class="bg-pistacho font-medium text-base p-2 rounded-lg w-32"
           >
             Cerrar
           </button>

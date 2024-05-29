@@ -23,7 +23,7 @@
         (ngSubmit)="onSubmit()"
         class="flex flex-col p-4 md:p-10 lg:p-20 md:rounded-r-2xl justify-center bg-opacity-50 backdrop-blur-2xl w-full md:w-auto"
       >
-        <h1 class="text-texto text-2xl mb-4">Registro</h1>
+        <span class="text-texto text-2xl mb-4 font-semibold">Regístrate</span>
 
         <div class="p-2 md:p-4">
           <input
@@ -56,10 +56,28 @@
         </div>
 
         <button
-          class="bg-pistacho p-2 mt-2 rounded-3xl mb-4 text-xl"
+          class="bg-pistacho p-2 mt-2 rounded-3xl mb-4 text-xl flex flex-row justify-center"
           type="submit"
         >
           Registrarse
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-user-plus ml-2"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+            <path d="M16 19h6" />
+            <path d="M19 16v6" />
+            <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
+          </svg>
         </button>
 
         <div>

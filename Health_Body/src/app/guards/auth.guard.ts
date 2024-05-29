@@ -8,11 +8,11 @@ export const authGuard: CanActivateFn = (route, state) => {
   const utiles = inject(UtilesService);
 
   return new Promise((resolve) => {
-    authService.getAuth().onAuthStateChanged((user) => {
+    authService.currentUser$.subscribe((user) => {
       if (user) {
         resolve(true);
       } else {
-        authService.signOut();
+        utiles.routerLink('/login'); // Redirige a login si no está autenticado
         resolve(false);
       }
     });

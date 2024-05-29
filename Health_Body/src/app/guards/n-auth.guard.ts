@@ -8,8 +8,8 @@ export const nAuthGuard: CanActivateFn = (route, state) => {
   const utiles = inject(UtilesService);
 
   return new Promise((resolve) => {
-    authService.getAuth().onAuthStateChanged((authGuard) => {
-      if (!authGuard) {
+    authService.currentUser$.subscribe((user) => {
+      if (!user) {
         resolve(true);
       } else {
         utiles.routerLink('/cuenta');

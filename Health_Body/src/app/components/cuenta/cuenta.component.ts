@@ -1,10 +1,10 @@
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
 import { PanelPrincipalComponent } from '../panel-principal/panel-principal.component';
 import { BuscadorAlimentosComponent } from '../buscador-alimentos/buscador-alimentos.component';
-import { MenuSemanalComponent } from '../menu-semanal/menu-semanal.component'; // Importa el AuthService
+import { MenuSemanalComponent } from '../menu-semanal/menu-semanal.component';
 import { NgClass, NgSwitch, NgSwitchCase } from '@angular/common';
 import { FooterComponent } from '../footer/footer.component';
 import { UtilesService } from '../../services/utiles.service';
@@ -26,7 +26,7 @@ import { UtilesService } from '../../services/utiles.service';
     FooterComponent,
   ],
 })
-export class CuentaComponent {
+export class CuentaComponent implements OnInit {
   datos: any = {};
   showModal: boolean = false;
   selectedProduct: any;
@@ -42,7 +42,6 @@ export class CuentaComponent {
   }
 
   getDatos(alimento: string) {
-    // Nombre del alimento
     this.apiService.getData(alimento).subscribe((data) => {
       this.datos = data;
       console.log(this.datos);
@@ -71,16 +70,14 @@ export class CuentaComponent {
   }
 
   ngOnInit() {
-    /*           APARTADO DE NAV LATERAL       */
-    /*           APARTADO DE NAV LATERAL       */
-    /*           APARTADO DE NAV LATERAL       */
-
     this.isLargeScreen = window.innerWidth >= 768;
     this.isMenuOpen = this.isLargeScreen;
 
-    /*           APARTADO DE NAV LATERAL       */
-    /*           APARTADO DE NAV LATERAL       */
-    /*           APARTADO DE NAV LATERAL       */
+    this.authService.currentUser$.subscribe((user) => {
+      if (!user) {
+        this.utiles.routerLink('/login');
+      }
+    });
   }
 
   toggleMenu() {

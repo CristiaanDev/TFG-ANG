@@ -25,6 +25,9 @@ import { NgFor, NgIf } from '@angular/common';
   styleUrl: './buscador-alimentos.component.scss',
 })
 export class BuscadorAlimentosComponent {
+  random() {
+    return Math.floor(Math.random() * 101);
+  }
   datos: any = {};
   showModal: boolean = false;
   selectedProduct: any;

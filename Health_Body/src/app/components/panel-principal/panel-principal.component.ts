@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, NgIf, TitleCasePipe } from '@angular/common';
 import { UtilesService } from '../../services/utiles.service';
 import { User } from '../../user.interface';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,7 +11,7 @@ import { CompletarUsuarioComponent } from '../completar-usuario/completar-usuari
   templateUrl: './panel-principal.component.html',
   styleUrls: ['./panel-principal.component.scss'],
   standalone: true,
-  imports: [AsyncPipe, NgIf],
+  imports: [AsyncPipe, TitleCasePipe, NgIf],
 })
 export class PanelPrincipalComponent implements OnInit {
   authService = inject(AuthService);
