@@ -9,4 +9,5 @@ export interface User {
   gender?: string;
   activityLevel?: string;
   goal?: string;
+  menuImage?: string; // Añadir esta línea
 }

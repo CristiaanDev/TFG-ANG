@@ -1,4 +1,7 @@
-<button class="bg-pistacho p-2 rounded-md">Generar menú</button>
-<div class =" flex flex-row justify-center">
-  <img class="w-4/6 h-auto" src="../../assets/img/Menu1.png" alt="">
-</div>
+
+  <button class="bg-pistacho p-2 rounded-md" (click)="generateRandomMenu()">Generar Menú</button>
+  <button class="bg-pistacho p-2 rounded-md ml-2" (click)="addMenuToUser()">Añadir</button>
+  <div class="flex flex-row justify-center mt-2 w-4/6">
+    <img [src]="currentImage" alt="Menú semanal" />
+  </div>
+

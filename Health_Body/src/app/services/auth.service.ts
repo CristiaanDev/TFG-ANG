@@ -100,6 +100,7 @@ export class AuthService {
     return setDoc(doc(this.firestore, path), data, { merge: true });
   }
 
+
   async getDocument(path: string): Promise<DocumentData | undefined> {
     const docRef = doc(this.firestore, path);
     const docSnap = await getDoc(docRef);
