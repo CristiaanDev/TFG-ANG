@@ -58,59 +58,14 @@ export class RegistroComponent {
       this.utiles.showLoading();
       this.authService
         .register(this.form.value as User)
-        .then((res) => {
-          const username = this.form.value.username;
-
-          if (typeof username === 'string' && username) {
-            this.authService
-              .updateUser(username)
-              .then(() => {
-                console.log('Usuario actualizado correctamente');
-                let id = res.user.uid;
-                this.setUserInfo(id);
-              })
-              .catch((error) => {
-                this.utiles.hideLoading();
-                /*this.utiles.showToast(
-                  'Error al actualizar usuario: ' + error.message
-                );*/
-                console.error('Error al actualizar usuario:', error);
-              });
-          } else {
-            this.utiles.hideLoading();
-            /*this.utiles.showToast('Username no válido');*/
-            console.error('Username no válido');
-          }
+        .then(() => {
+          this.utiles.hideLoading();
+          this.utiles.routerLink('/login');
         })
         .catch((error) => {
           this.utiles.hideLoading();
-          //this.utiles.showToast('Error al registrar usuario: ' + error.message);
           console.error('Error al registrar usuario:', error);
         });
     }
-  }
-
-  setUserInfo(id: string) {
-    const userData = {
-      email: this.form.value.email,
-      username: this.form.value.username,
-    };
-
-    let path = `users/${id}`;
-    this.authService
-      .setDocument(path, userData)
-      .then(() => {
-        this.utiles.hideLoading();
-        this.utiles.routerLink('/login');
-        this.form.reset();
-        console.log('Información del usuario guardada correctamente');
-      })
-      .catch((error) => {
-        this.utiles.hideLoading();
-        /*this.utiles.showToast(
-          'Error al guardar información del usuario: ' + error.message
-        );*/
-        console.error('Error al guardar información del usuario:', error);
-      });
   }
 }

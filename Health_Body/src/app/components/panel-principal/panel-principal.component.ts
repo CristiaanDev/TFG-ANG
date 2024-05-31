@@ -37,6 +37,7 @@ export class PanelPrincipalComponent implements OnInit, OnDestroy {
             const storedUser = { ...userData, id: user.uid };
             this.utiles.saveInLocaleStorage('user', storedUser);
             this.user = storedUser;
+            this.username = userData.username;
           }
         });
       }

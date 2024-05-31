@@ -27,10 +27,15 @@ export class AuthService {
   constructor() {
     onAuthStateChanged(this.auth, (user) => {
       this.userSubject.next(user);
-      this.usernameSubject.next(user ? user.displayName : null);
       if (user) {
+        this.getUserData(user.uid).then((userData) => {
+          if (userData) {
+            this.usernameSubject.next(userData.username);
+          }
+        });
         localStorage.setItem('user', JSON.stringify(user));
       } else {
+        this.usernameSubject.next(null);
         localStorage.removeItem('user');
       }
     });
@@ -45,7 +50,14 @@ export class AuthService {
   }
 
   logIn(user: User) {
-    return signInWithEmailAndPassword(this.auth, user.email, user.password);
+    return signInWithEmailAndPassword(this.auth, user.email, user.password).then(async (res) => {
+      const userId = res.user.uid;
+      const userData = await this.getUserData(userId);
+      if (userData) {
+        this.usernameSubject.next(userData.username);
+      }
+      return res;
+    });
   }
 
   register(user: User) {
@@ -53,13 +65,21 @@ export class AuthService {
       this.auth,
       user.email,
       user.password
-    ).then((res) => {
-      return this.signOut().then(() => res);
+    ).then(async (res) => {
+      const userId = res.user.uid;
+      await this.updateUser(user.username);
+      await this.setDocument(`users/${userId}`, {
+        email: user.email,
+        username: user.username,
+      });
+      this.usernameSubject.next(user.username);
+      return res;
     });
   }
 
   signOut() {
     return signOut(this.auth).then(() => {
+      this.usernameSubject.next(null);
       localStorage.removeItem('user');
       this.utiles.routerLink('/login');
     });
