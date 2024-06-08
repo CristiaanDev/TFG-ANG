@@ -21,8 +21,6 @@ export class MenuSemanalComponent implements OnInit {
     'assets/img/Menu3.png',
     'assets/img/Menu4.png',
     'assets/img/Menu5.png',
-    'assets/img/Menu6.png',
-    'assets/img/Menu7.png'
   ];
   currentImage = this.images[0];
   user: User | null = null;
@@ -43,7 +41,8 @@ export class MenuSemanalComponent implements OnInit {
   addMenuToUser(): void {
     if (this.user) {
       this.user.menuImage = this.currentImage;
-      this.authService.setDocument(`users/${this.user.id}`, { menuImage: this.currentImage })
+      this.authService
+        .setDocument(`users/${this.user.id}`, { menuImage: this.currentImage })
         .then(() => {
           this.utiles.saveInLocaleStorage('user', this.user);
           console.log('Menú semanal guardado correctamente');
